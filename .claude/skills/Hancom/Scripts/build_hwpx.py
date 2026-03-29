@@ -382,13 +382,36 @@ def build_hwpx(args: argparse.Namespace) -> str:
         print(f"[INFO] Copying base template from: {template_dir}")
         _copy_template(template_dir, tmp_dir)
 
-        # 2. Place section files into Contents/
+        # 2. Place section files into Contents/, injecting secPr if missing
         contents_dir = os.path.join(tmp_dir, "Contents")
         os.makedirs(contents_dir, exist_ok=True)
+        secpr_template_path = os.path.join(template_dir, "secpr_template.xml")
         for src, name in zip(section_inputs, section_names):
             dst = os.path.join(contents_dir, name)
             shutil.copy2(src, dst)
-            print(f"[INFO] Section: {name} <- {src}")
+            # Auto-inject secPr if the section doesn't contain one
+            with open(dst, "r", encoding="utf-8") as f:
+                sec_content = f.read()
+            if "<hp:secPr" not in sec_content and os.path.isfile(secpr_template_path):
+                with open(secpr_template_path, "r", encoding="utf-8") as f:
+                    secpr_xml = f.read().strip()
+                # Insert secPr inside the first <hp:run> of the first <hp:p>
+                # Pattern: after first <hp:run charPrIDRef="N">
+                injected = re.sub(
+                    r'(<hp:run charPrIDRef="\d+">)',
+                    r'\1' + secpr_xml,
+                    sec_content,
+                    count=1,
+                )
+                if injected != sec_content:
+                    with open(dst, "w", encoding="utf-8") as f:
+                        f.write(injected)
+                    print(f"[INFO] Section: {name} <- {src} (secPr auto-injected)")
+                else:
+                    print(f"[INFO] Section: {name} <- {src} (secPr injection failed, no matching run)")
+            else:
+                reason = "already has secPr" if "<hp:secPr" in sec_content else "no template"
+                print(f"[INFO] Section: {name} <- {src} ({reason})")
 
         # 3. Optional header override
         if header_override:

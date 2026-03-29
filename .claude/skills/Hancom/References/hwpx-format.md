@@ -4,6 +4,14 @@ A principle-based guide to the HWPX document format, derived from analysis of 6 
 
 ---
 
+> **GOLDEN RULE: Never hand-write header.xml or secPr from scratch.**
+> Always copy these from a real, working HWPX document and modify only the values you need.
+> The Hancom viewer crashes on subtle structural deviations that are invisible when reading the XML.
+> Missing child elements in secPr cause blank pages; missing attributes on hp:tc cause render failures.
+> There is no schema documentation from Hancom -- the only reliable source of truth is a working file.
+
+---
+
 ## 1. Architecture: HWPX as a ZIP Package
 
 HWPX follows the same philosophy as OOXML (.docx) and ODF (.odt): a document is a ZIP archive of XML files. This design separates concerns -- styles live apart from content, metadata apart from both -- enabling partial reads and parallel processing.
@@ -281,22 +289,67 @@ The first paragraph in a section typically contains an `hp:run` with `hp:secPr` 
 
 ### Section Properties (secPr)
 
-Section properties define page geometry and appear inside the first run of the first paragraph:
+Section properties define page geometry and appear inside the first run of the first paragraph. **ALL child elements listed below are required** -- omitting any of them causes Hancom to render a blank page.
 
 ```xml
-<hp:secPr>
+<hp:secPr textDirection="HORIZONTAL" spaceColumns="1134" tabStop="8000"
+          outlineShapeIDRef="1" memoShapeIDRef="0" textVerticalWidthHead="0"
+          masterPageCnt="0">
+  <hp:grid lineGrid="0" charGrid="0" wonggojiFormat="0"/>
+  <hp:startNum pageStartsOn="BOTH" page="0" pic="0" tbl="0" equation="0"/>
+  <hp:visibility hideFirstHeader="0" hideFirstFooter="0"
+                 hideFirstMasterPage="0" border="SHOW_ALL" fill="SHOW_ALL"
+                 hideFirstPageNum="0" hideFirstEmptyLine="0"
+                 showLineNumber="0"/>
+  <hp:lineNumberShape restartType="0" countBy="0" distance="0"
+                      startNumber="0"/>
   <hp:pagePr landscape="WIDELY" width="59528" height="84188"
              gutterType="LEFT_ONLY">
     <hp:margin header="4252" footer="4252" left="8504" right="8504"
               top="5668" bottom="4252" gutter="0"/>
   </hp:pagePr>
-  <hp:footNotePr>...</hp:footNotePr>
-  <hp:endNotePr>...</hp:endNotePr>
+  <hp:footNotePr>
+    <hp:autoNumFormat type="DIGIT" suffixChar=")" superscript="0"/>
+    <hp:noteLine length="-1" type="SOLID" width="0.12mm" color="#000000"/>
+    <hp:noteSpacing betweenNotes="283" belowLine="567" aboveLine="850"/>
+    <hp:numbering type="CONTINUOUS" newNum="1"/>
+    <hp:placement place="EACH_COLUMN" beneathText="0"/>
+  </hp:footNotePr>
+  <hp:endNotePr>
+    <hp:autoNumFormat type="DIGIT" suffixChar=")" superscript="0"/>
+    <hp:noteLine length="14692308" type="SOLID" width="0.12mm"
+                 color="#000000"/>
+    <hp:noteSpacing betweenNotes="0" belowLine="567" aboveLine="850"/>
+    <hp:numbering type="CONTINUOUS" newNum="1"/>
+    <hp:placement place="END_OF_DOCUMENT" beneathText="0"/>
+  </hp:endNotePr>
   <hp:pageBorderFill type="BOTH" borderFillIDRef="1"
                      offsetLeft="1417" offsetRight="1417"
-                     offsetTop="1417" offsetBottom="1417"/>
+                     offsetTop="1417" offsetBottom="1417"
+                     connect="BODY"/>
+  <hp:pageBorderFill type="EVEN" borderFillIDRef="1"
+                     offsetLeft="1417" offsetRight="1417"
+                     offsetTop="1417" offsetBottom="1417"
+                     connect="BODY"/>
+  <hp:pageBorderFill type="ODD" borderFillIDRef="1"
+                     offsetLeft="1417" offsetRight="1417"
+                     offsetTop="1417" offsetBottom="1417"
+                     connect="BODY"/>
 </hp:secPr>
 ```
+
+**Required secPr child elements** (all must be present or the page renders blank):
+
+| Element | Purpose |
+|---------|---------|
+| `hp:grid` | Grid settings for character/line alignment |
+| `hp:startNum` | Starting numbers for pages, figures, tables, equations |
+| `hp:visibility` | Controls visibility of headers, footers, borders, fills |
+| `hp:lineNumberShape` | Line numbering configuration |
+| `hp:pagePr` with `hp:margin` | Page dimensions and margins |
+| `hp:footNotePr` | Footnote formatting (required even if no footnotes) |
+| `hp:endNotePr` | Endnote formatting (required even if no endnotes) |
+| `hp:pageBorderFill` x3 | Page border/fill for BOTH, EVEN, and ODD pages |
 
 **Units**: All dimensions use HWPUNIT where **7200 HWPUNIT = 1 inch**.
 
@@ -320,7 +373,7 @@ Tables are the most structurally complex element. They follow a grid model simil
 
   <!-- Row 0 -->
   <hp:tr>
-    <hp:tc borderFillIDRef="13" width="14000" header="0">
+    <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="13">
       <hp:cellAddr colAddr="0" rowAddr="0"/>
       <hp:cellSpan colSpan="1" rowSpan="1"/>
       <hp:cellSz width="14000" height="1000"/>
@@ -333,7 +386,7 @@ Tables are the most structurally complex element. They follow a grid model simil
         </hp:p>
       </hp:subList>
     </hp:tc>
-    <hp:tc borderFillIDRef="13" width="14000" header="0">
+    <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="13">
       <hp:cellAddr colAddr="1" rowAddr="0"/>
       <hp:cellSpan colSpan="1" rowSpan="1"/>
       <hp:cellSz width="14000" height="1000"/>
@@ -350,7 +403,7 @@ Tables are the most structurally complex element. They follow a grid model simil
 
   <!-- Row 1 -->
   <hp:tr>
-    <hp:tc borderFillIDRef="4" width="14000" header="0">
+    <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
       <hp:cellAddr colAddr="0" rowAddr="1"/>
       <hp:cellSpan colSpan="1" rowSpan="1"/>
       <hp:cellSz width="14000" height="1000"/>
@@ -368,14 +421,24 @@ Tables are the most structurally complex element. They follow a grid model simil
 </hp:tbl>
 ```
 
-**How tables embed in paragraphs**: A table is always a child of a `<hp:run>` inside a `<hp:p>`:
+**How tables embed in paragraphs**: A table is always a **direct child** of `<hp:run>` inside `<hp:p>`. Do NOT wrap tables in `<hp:ctrl>` -- that element is for column properties (`colPr`), not tables.
 
 ```xml
+<!-- CORRECT: table directly inside hp:run -->
 <hp:p paraPrIDRef="0" styleIDRef="0">
   <hp:run charPrIDRef="0">
     <hp:tbl ...>
       <!-- table content -->
     </hp:tbl>
+  </hp:run>
+</hp:p>
+
+<!-- WRONG: do NOT wrap tables in hp:ctrl -->
+<hp:p paraPrIDRef="0" styleIDRef="0">
+  <hp:run charPrIDRef="0">
+    <hp:ctrl> <!-- WRONG! hp:ctrl is for colPr, not tables -->
+      <hp:tbl ...>...</hp:tbl>
+    </hp:ctrl>
   </hp:run>
 </hp:p>
 ```
@@ -433,6 +496,12 @@ These are not design guidelines -- they are requirements that cause document cor
 6. **XML encoding must be UTF-8.**
 
 7. **Namespace prefixes must be consistent** throughout each file.
+
+8. **secPr must include ALL required child elements** (`hp:grid`, `hp:startNum`, `hp:visibility`, `hp:lineNumberShape`, `hp:pagePr` with `hp:margin`, `hp:footNotePr`, `hp:endNotePr`, and three `hp:pageBorderFill` elements for type BOTH/EVEN/ODD). Omitting any of these causes the page to render blank in Hancom.
+
+9. **Tables go directly inside `<hp:run>`, never wrapped in `<hp:ctrl>`.** The `<hp:ctrl>` element is for column properties (`colPr`), not for embedding tables.
+
+10. **`<hp:tc>` must include all required attributes**: `name`, `header`, `hasMargin`, `protect`, `editable`, `dirty`, and `borderFillIDRef`. The `width` attribute does NOT go on `<hp:tc>` -- it belongs in the child `<hp:cellSz>` element.
 
 ---
 

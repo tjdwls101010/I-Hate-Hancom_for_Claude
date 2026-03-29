@@ -151,6 +151,42 @@ HWPX 포맷에는 원칙이 아닌 **기술적 필수 요건**이 있다. 이를
 5. **XML 인코딩** — UTF-8만 사용
 6. **네임스페이스 접두사** — 파일 전체에서 일관되어야 한다
 
+## 함정 방지 (반드시 읽을 것)
+
+Hancom 뷰어는 XML 구조에 매우 민감하다. 아래 사항을 어기면 크래시, 빈 페이지, 또는 시각적 결함이 발생한다. 이 내용은 실제 테스트에서 확인된 것이다.
+
+### header.xml은 직접 생성하지 말 것
+Hancom 뷰어는 header.xml의 내부 구조에 문서화되지 않은 요구사항이 있다. XML로서 유효하더라도 뷰어가 크래시할 수 있다. 반드시 `templates/base/Contents/header.xml`(실제 정부 문서에서 추출)을 사용한다.
+
+### secPr은 템플릿을 사용할 것
+section0.xml의 첫 번째 문단 첫 번째 run에 secPr(페이지 설정)이 필요하다. secPr이 불완전하면 빈 페이지가 된다. `build_hwpx.py`는 secPr이 없으면 `templates/base/secpr_template.xml`을 자동 삽입한다. secPr을 직접 작성할 필요가 없다.
+
+### 표는 `<hp:run>` 안에 직접 넣을 것
+```xml
+<!-- 올바름 -->
+<hp:run charPrIDRef="0"><hp:tbl ...>...</hp:tbl></hp:run>
+
+<!-- 잘못됨 — 크래시 발생 -->
+<hp:run charPrIDRef="0"><hp:ctrl><hp:tbl ...>...</hp:tbl></hp:ctrl></hp:run>
+```
+`<hp:ctrl>`은 컬럼 설정(colPr) 등에만 사용되며, 표를 감싸면 안 된다.
+
+### `<hp:tc>` 태그에 필수 속성을 모두 포함할 것
+```xml
+<!-- 올바른 형식 (실제 문서에서 추출) -->
+<hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+
+<!-- 잘못된 형식 — 속성 누락 -->
+<hp:tc borderFillIDRef="4" width="10000" header="0">
+```
+`width`는 tc 속성이 아니라 `<hp:cellSz>`에서 지정한다.
+
+### paraPr 2~8은 일반 본문에 사용 금지
+이 ID들은 `heading type="OUTLINE"`이 연결되어 있어 자동 번호 매기기(1., 가., 3) 등)가 활성화된다. 들여쓰기가 필요하면 paraPr 0(기본), 1(left=1500), 14(left=1100), 15(left=2200)를 사용한다. 상세한 안전/위험 ID 목록은 `references/style-catalog.md` 참조.
+
+### 어두운 배경의 표 셀에는 흰색 글자를 사용할 것
+borderFill 14(#000066 진한 파랑) 같은 어두운 배경에 검정 글자를 넣으면 보이지 않는다. 흰색 textColor를 가진 charPr(id=8, 26, 55)을 사용한다.
+
 ## 스크립트 경로 참조
 
 모든 스크립트는 이 스킬 디렉토리 내 `scripts/`에 위치한다:

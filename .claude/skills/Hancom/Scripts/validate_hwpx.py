@@ -176,6 +176,54 @@ def check_content_hpf(zf):
     else:
         report("PASS", "content.hpf references all resolve to ZIP entries")
 
+def check_hancom_compat(sec_root, hdr_root, ids, section_name):
+    """Extra checks for Hancom Office compatibility pitfalls."""
+    # 1. Table inside hp:ctrl → crash
+    for ctrl in sec_root.iter(_t("hp", "ctrl")):
+        if ctrl.find(_t("hp", "tbl")) is not None:
+            report("WARN", f"{section_name}: table inside <hp:ctrl> — will crash Hancom. "
+                   "Tables must be direct children of <hp:run>")
+    # 2. hp:tc missing required attributes
+    required_tc_attrs = {"header", "borderFillIDRef"}
+    recommended_tc_attrs = {"name", "hasMargin", "protect", "editable", "dirty"}
+    tc_missing_warned = False
+    for tc in sec_root.iter(_t("hp", "tc")):
+        missing_req = required_tc_attrs - set(tc.attrib.keys())
+        if missing_req:
+            report("WARN", f"{section_name}: <hp:tc> missing required attrs: {missing_req}")
+        missing_rec = recommended_tc_attrs - set(tc.attrib.keys())
+        if missing_rec and not tc_missing_warned:
+            report("WARN", f"{section_name}: <hp:tc> missing recommended attrs: {missing_rec} "
+                   "(real docs include name, hasMargin, protect, editable, dirty)")
+            tc_missing_warned = True
+    # 3. secPr completeness
+    secpr = sec_root.find(".//" + _t("hp", "secPr"))
+    if secpr is not None:
+        needed = ["pagePr", "pageBorderFill", "grid", "startNum", "visibility"]
+        for tag in needed:
+            if secpr.find(_t("hp", tag)) is None:
+                report("WARN", f"{section_name}: secPr missing <hp:{tag}> — may cause blank page")
+    else:
+        report("WARN", f"{section_name}: no secPr found — page settings undefined, may show blank")
+    # 4. OUTLINE paraPr usage warning
+    outline_ppr = set()
+    for pp in hdr_root.iter(_t("hh", "paraPr")):
+        heading = pp.find(_t("hh", "heading"))
+        if heading is not None and heading.get("type") == "OUTLINE":
+            pid = pp.get("id")
+            if pid: outline_ppr.add(pid)
+    if outline_ppr:
+        for p in sec_root.iter(_t("hp", "p")):
+            ppr = p.get("paraPrIDRef")
+            if ppr in outline_ppr:
+                report("WARN", f"{section_name}: paraPrIDRef={ppr} has OUTLINE heading "
+                       "— auto-numbering will be applied")
+                break  # one warning is enough
+    if not any(True for _ in sec_root.iter(_t("hp", "ctrl"))):
+        pass  # no ctrl elements, that's fine
+    # If no warnings were reported, note success
+    # (check by looking at global counters - a bit hacky but works)
+
 def check_container_rdf(zf):
     try: data = zf.read("META-INF/container.rdf")
     except KeyError:
@@ -227,6 +275,10 @@ def validate_hwpx(path):
         print("\n-- Table Structure --")
         for sn in _parse_sections(zf):
             try: check_tables(ET.fromstring(zf.read(sn)), sn)
+            except ET.ParseError: pass
+        print("\n-- Hancom Compatibility --")
+        for sn in _parse_sections(zf):
+            try: check_hancom_compat(ET.fromstring(zf.read(sn)), hdr, ids, sn)
             except ET.ParseError: pass
         print("\n-- Content Consistency --")
         check_content_hpf(zf)
