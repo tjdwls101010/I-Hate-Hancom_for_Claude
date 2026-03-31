@@ -45,8 +45,8 @@ For working XML examples of each pattern, see the design catalog: `templates/des
 
 | ID | Size | Font | Bold | Color | Use For |
 |----|------|------|------|-------|---------|
-| 0 | 10pt | 돋움체 (0) | No | black | **Table body cells** |
-| 136 | 10pt | 돋움체 (0) | **Yes** | black | **Table header cells, row labels** |
+| 109 | 12pt | 바탕 (2) | No | black | **Table body cells** |
+| 10 | 12pt | 돋움체 (0) | **Yes** | black | **Table header cells, row labels** |
 | 51 | 12pt | 맑은 고딕 (1) | **Yes** | black | **< Caption > text** |
 | 10 | 12pt | 돋움체 (0) | **Yes** | black | Small bold keywords |
 
@@ -54,7 +54,8 @@ For working XML examples of each pattern, see the design catalog: `templates/des
 
 | ID | Size | Font | Bold | Color | Use For |
 |----|------|------|------|-------|---------|
-| 1 | 9pt | — | No | black | **Spacer line** (small empty paragraph) |
+| 5 | 11pt | 함초롬돋움 (4) | No | black | **Spacer line** (small empty paragraph) |
+| 99 | 15pt | 맑은 고딕 (1) | No | black | **○-level underline emphasis** (underline=BOTTOM) |
 | 8 | 10pt | 돋움체 (0) | No | **white** | Text on dark background (small) |
 | 55 | 16pt | — | No | **white** | Text on dark background (large) |
 
@@ -125,7 +126,7 @@ These are the most frequently used combinations. The design catalog contains wor
 | Pattern | charPr | paraPr | borderFill | Notes |
 |---------|--------|--------|------------|-------|
 | Body paragraph | 9 | 0 | — | Add 2× full-width space indent |
-| Spacer line | 1 | 0 | — | Content: single space " " |
+| Spacer line | 5 | 0 | — | 11pt, content: single space " " |
 | Main title | 128 | 19 | — | Centered, 26pt bold |
 | Right-aligned date | 9 | 29 | — | |
 | □ major topic | 9 + 34 | 1 | — | Bold keyword in separate run |
@@ -133,9 +134,10 @@ These are the most frequently used combinations. The design catalog contains wor
 | - sub-item | 9 | 14 | — | |
 | * deep sub-item | 9 | 15 | — | |
 | < Caption > | 51 | 19 | — | Escape < > as &amp;lt; &amp;gt; |
-| Table header cell | 136 | 22 | 22 or 23 | Gray or blue background |
-| Table body cell | 0 | 19 or 0 | 4 | Center or justify |
-| Section # cell | 26 | 22 | 14 | White text on navy |
+| Table header cell | 10 | 22 | 22 or 23 | 12pt bold, gray or blue background |
+| Table body cell | 109 | 19 or 0 | 4 | 12pt, center or justify |
+| Section # cell | 10 | 22 | 19 | 12pt bold, green L+T bracket |
+| Section title cell | 29 | 33 | 20 | Bold heading, green R+T+B bracket |
 | Section title cell | 29 | 33 | 4 | Bold heading font |
 | Note box | 1 | 0 | 25 | 1x1 table, dashed gray |
 | Info box | 0 | 0 | 26 | 1x1 table, dashed blue |

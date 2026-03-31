@@ -78,8 +78,11 @@ These subtle techniques are what make a document look professionally crafted:
 ### Full-width space indent
 Every body paragraph starts with two ideographic spaces (U+3000 `　`). This creates a visual indent without relying on paragraph-level indentation. Do NOT apply to: table cells, titles, captions, or note box content.
 
-### Micro-spacing (9pt spacers)
-Between sections, use a spacer paragraph with charPr 1 (9pt) containing a single space. This creates ~60% of a full line's height — enough breathing room without wasting space. Never use a full-size (14pt) empty paragraph as a spacer.
+### Micro-spacing (11pt spacers)
+Between sections, use a spacer paragraph with charPr 5 (11pt) containing a single space. This creates ~80% of a full line's height — enough breathing room without wasting space. Never use a full-size (14pt) empty paragraph as a spacer.
+
+### ○-level underline emphasis
+Use charPr 99 (15pt 맑은고딕, underline BOTTOM) for ○-level keyword labels. This distinguishes ○ items from □ items and surrounding body text with a visible underline decoration.
 
 ### Bold keyword technique
 In body text, bold only the key noun phrase, not the entire sentence. Critically, verb endings (-했다, -됩니다, -을 추진) must stay in normal weight. This creates a "journalist's highlight" effect.
@@ -107,9 +110,10 @@ Every table header row must have a colored background. Without it, headers are i
 - **Gray+double bottom (bf24)** — For separator-style headers
 
 ### Section headers are tables
-Major section dividers (corresponding to `# Heading` in markdown) are 1x2 tables:
-- Left cell: Navy background (bf14), white number (charPr 26), centered
-- Right cell: Standard border (bf4), bold title (charPr 29)
+Major section dividers (corresponding to `# Heading` in markdown) are 1x2 tables with green bracket borders:
+- Left cell: Green top-left bracket (bf19), bold number (charPr 10), centered
+- Right cell: Green right+top+bottom bracket (bf20), bold title (charPr 29)
+- Not full-width — approximately 20000 HWPUNIT (~40% of content area)
 - The paragraph containing this table has `pageBreak="1"` to start a new page
 
 ### Box patterns

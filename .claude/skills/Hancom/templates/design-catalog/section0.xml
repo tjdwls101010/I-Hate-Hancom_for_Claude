@@ -19,12 +19,12 @@
 
   <!-- ================================================================ -->
   <!-- PATTERN: Small Empty Line (spacer)                               -->
-  <!-- charPr 1 = 9pt, paraPr 0 = default                              -->
+  <!-- charPr 5 = 11pt, paraPr 0 = default                              -->
   <!-- Use for: Visual breathing room between sections                  -->
   <!-- Tip: Use a single space " " as content to avoid empty-run bugs   -->
   <!-- ================================================================ -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -43,7 +43,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -66,7 +66,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -74,7 +74,7 @@
   <!-- ================================================================ -->
   <!-- PATTERN: Note Box (※ warning/caution)                           -->
   <!-- 1x1 table with borderFill 25 = dashed gray bg (#EDEDED)         -->
-  <!-- charPr 1 = 9pt for compact note text                            -->
+  <!-- charPr 5 = 11pt for compact note text                            -->
   <!-- Use for: Warnings, prerequisites, important notices              -->
   <!-- ================================================================ -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
@@ -103,7 +103,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -127,13 +127,13 @@
             <hp:cellMargin left="510" right="510" top="283" bottom="283"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>래퍼 박스 안의 소개 텍스트입니다. 관련된 내용을 하나의 테두리 안에 그룹화합니다.</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>래퍼 박스 안의 소개 텍스트입니다. 관련된 내용을 하나의 테두리 안에 그룹화합니다.</hp:t></hp:run>
               </hp:p>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="1"><hp:t> </hp:t></hp:run>
+                <hp:run charPrIDRef="5"><hp:t> </hp:t></hp:run>
               </hp:p>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>이 안에 표나 목록 등 관련 콘텐츠가 포함됩니다.</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>이 안에 표나 목록 등 관련 콘텐츠가 포함됩니다.</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -144,7 +144,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -163,7 +163,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -171,10 +171,10 @@
   <!-- ================================================================ -->
   <!-- PATTERN: Data Table (gray header)                                -->
   <!-- Header row: borderFill 22 = light gray (#F2F2F2) solid           -->
-  <!--   charPr 136 = 10pt 돋움체 bold (header text)                    -->
+  <!--   charPr 10 = 12pt 돋움체 bold (header text)                    -->
   <!--   paraPr 22 = CENTER (table cell)                                -->
   <!-- Body rows: borderFill 4 = solid border (no fill)                 -->
-  <!--   charPr 0 = 10pt 돋움체 normal (body text)                      -->
+  <!--   charPr 109 = 12pt 바탕 (body text)                      -->
   <!--   paraPr 19 = CENTER (for centered cells)                        -->
   <!--   paraPr 0 = JUSTIFY (for left-aligned text cells)               -->
   <!-- Use for: Standard data tables, comparison tables, summary tables -->
@@ -192,7 +192,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>구분</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>구분</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -203,7 +203,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>주요 내용</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>주요 내용</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -214,7 +214,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>비고</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>비고</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -228,7 +228,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>제목 패턴</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>제목 패턴</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -239,7 +239,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>26pt 함초롬돋움 bold, 가운데 정렬</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>26pt 함초롬돋움 bold, 가운데 정렬</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -250,7 +250,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>charPr 128</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>charPr 128</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -264,7 +264,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>본문 패턴</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>본문 패턴</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -275,7 +275,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>14pt 함초롬바탕, 양쪽 정렬, 전각 공백 들여쓰기</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>14pt 함초롬바탕, 양쪽 정렬, 전각 공백 들여쓰기</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -286,7 +286,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>charPr 9</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>charPr 9</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -300,7 +300,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>표 패턴</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>표 패턴</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -311,7 +311,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>회색 헤더(bf22) + 데이터 셀(bf4)</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>회색 헤더(bf22) + 데이터 셀(bf4)</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -322,7 +322,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>borderFill 22, 23</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>borderFill 22, 23</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -333,15 +333,15 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
 
   <!-- ================================================================ -->
   <!-- PATTERN: Section Header (numbered, with page break)              -->
-  <!-- 1x2 table: navy number cell (bf14) + title cell (bf4)           -->
-  <!-- Number cell: charPr 26 = 17pt HY헤드라인M white on navy          -->
+  <!-- 1x2 table: green bracket cells (bf19 + bf20)           -->
+  <!-- Number cell: charPr 10 = 12pt 돋움체 bold black          -->
   <!-- Title cell: charPr 29 = 15pt HY헤드라인M bold                    -->
   <!-- paraPr 22 = CENTER for number, paraPr 33 = CENTER for title      -->
   <!-- Set pageBreak="1" on the paragraph to start a new page           -->
@@ -352,21 +352,21 @@
       <hp:tbl rowCnt="1" colCnt="2" cellSpacing="0" borderFillIDRef="4"
               pageBreak="CELL" repeatHeader="0" id="0">
         <hp:tr>
-          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="14">
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="19">
             <hp:cellAddr colAddr="0" rowAddr="0"/>
             <hp:cellSpan colSpan="1" rowSpan="1"/>
-            <hp:cellSz width="4000" height="1400"/>
+            <hp:cellSz width="3500" height="1600"/>
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="26"><hp:t>1</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>1</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
-          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="20">
             <hp:cellAddr colAddr="1" rowAddr="0"/>
             <hp:cellSpan colSpan="1" rowSpan="1"/>
-            <hp:cellSz width="44000" height="1400"/>
+            <hp:cellSz width="16500" height="1600"/>
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="33" styleIDRef="0">
@@ -381,7 +381,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -401,7 +401,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -414,23 +414,23 @@
   <!-- ================================================================ -->
   <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
     <hp:run charPrIDRef="9"><hp:t>○ </hp:t></hp:run>
-    <hp:run charPrIDRef="34"><hp:t>(제목 패턴)</hp:t></hp:run>
+    <hp:run charPrIDRef="99"><hp:t>(제목 패턴)</hp:t></hp:run>
     <hp:run charPrIDRef="9"><hp:t> 문서의 첫 페이지 상단에 26pt 함초롬돋움 볼드체로 가운데 정렬하여 배치합니다.</hp:t></hp:run>
   </hp:p>
 
   <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
     <hp:run charPrIDRef="9"><hp:t>○ </hp:t></hp:run>
-    <hp:run charPrIDRef="34"><hp:t>(본문 패턴)</hp:t></hp:run>
+    <hp:run charPrIDRef="99"><hp:t>(본문 패턴)</hp:t></hp:run>
     <hp:run charPrIDRef="9"><hp:t> 14pt 함초롬바탕으로 양쪽 정렬하되, 각 문단의 시작에 전각 공백 2개를 삽입하여 시각적 들여쓰기를 구현합니다.</hp:t></hp:run>
   </hp:p>
 
   <!-- ================================================================ -->
   <!-- PATTERN: Sub-Item (- dash marker)                                -->
   <!-- Simple dash prefix, charPr 9 = body text                         -->
-  <!-- paraPr 14 = JUSTIFY with deeper indent (left=1100)               -->
+  <!-- paraPr 15 = LEFT with deeper indent (left=2200)               -->
   <!-- Use for: Third-level details, sub-explanations                   -->
   <!-- ================================================================ -->
-  <hp:p id="0" paraPrIDRef="14" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+  <hp:p id="0" paraPrIDRef="15" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
     <hp:run charPrIDRef="9">
       <hp:t>- 전각 공백은 유니코드 U+3000(　)이며, 일반 공백보다 2배 넓어 들여쓰기 효과가 뚜렷합니다.</hp:t>
     </hp:run>
@@ -449,7 +449,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -470,7 +470,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -488,7 +488,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -502,7 +502,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -527,7 +527,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>패턴 유형</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>패턴 유형</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -538,7 +538,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>초급자 적용</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>초급자 적용</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -549,7 +549,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>전문가 적용</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>전문가 적용</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -563,7 +563,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>섹션 구분</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>섹션 구분</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -574,7 +574,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>큰 글씨 제목만 사용</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>큰 글씨 제목만 사용</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -585,7 +585,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>번호 셀(네이비) + 제목 셀 조합 표</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>번호 셀(네이비) + 제목 셀 조합 표</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -599,7 +599,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>빈 줄 처리</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>빈 줄 처리</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -610,7 +610,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>본문 크기(14pt)의 빈 줄</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>본문 크기(14pt)의 빈 줄</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -621,7 +621,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>소형(9pt) 빈 줄로 미세 간격 조절</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>소형(9pt) 빈 줄로 미세 간격 조절</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -632,7 +632,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -659,16 +659,16 @@
               <!-- Use for: Sequential steps, ordered criteria  -->
               <!-- ============================================ -->
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>카탈로그 활용 절차</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>카탈로그 활용 절차</hp:t></hp:run>
               </hp:p>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>① 마크다운 문서의 구조를 분석하여 필요한 패턴을 식별합니다.</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>① 마크다운 문서의 구조를 분석하여 필요한 패턴을 식별합니다.</hp:t></hp:run>
               </hp:p>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>② 카탈로그에서 해당 패턴의 XML을 복사합니다.</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>② 카탈로그에서 해당 패턴의 XML을 복사합니다.</hp:t></hp:run>
               </hp:p>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>③ 텍스트 내용만 교체하고 스타일 ID는 그대로 유지합니다.</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>③ 텍스트 내용만 교체하고 스타일 ID는 그대로 유지합니다.</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -679,7 +679,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -693,21 +693,21 @@
       <hp:tbl rowCnt="1" colCnt="2" cellSpacing="0" borderFillIDRef="4"
               pageBreak="CELL" repeatHeader="0" id="0">
         <hp:tr>
-          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="14">
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="19">
             <hp:cellAddr colAddr="0" rowAddr="0"/>
             <hp:cellSpan colSpan="1" rowSpan="1"/>
-            <hp:cellSz width="4000" height="1400"/>
+            <hp:cellSz width="3500" height="1600"/>
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="26"><hp:t>2</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>2</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
-          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="20">
             <hp:cellAddr colAddr="1" rowAddr="0"/>
             <hp:cellSpan colSpan="1" rowSpan="1"/>
-            <hp:cellSz width="44000" height="1400"/>
+            <hp:cellSz width="16500" height="1600"/>
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="33" styleIDRef="0">
@@ -722,7 +722,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -736,7 +736,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -744,17 +744,17 @@
   <!-- ○ sub-topics -->
   <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
     <hp:run charPrIDRef="9"><hp:t>○ </hp:t></hp:run>
-    <hp:run charPrIDRef="34"><hp:t>(본문 서체)</hp:t></hp:run>
+    <hp:run charPrIDRef="99"><hp:t>(본문 서체)</hp:t></hp:run>
     <hp:run charPrIDRef="9"><hp:t> 함초롬바탕 14pt를 기본으로 사용하며, 강조가 필요한 부분은 휴먼명조 15pt 볼드를 적용합니다.</hp:t></hp:run>
   </hp:p>
 
-  <hp:p id="0" paraPrIDRef="14" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+  <hp:p id="0" paraPrIDRef="15" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
     <hp:run charPrIDRef="9">
       <hp:t>- 볼드 강조 시 동사 어미(-했다, -됩니다)는 일반 서체로 유지하여 자연스러운 시각적 리듬을 만듭니다.</hp:t>
     </hp:run>
   </hp:p>
 
-  <hp:p id="0" paraPrIDRef="14" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+  <hp:p id="0" paraPrIDRef="15" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
     <hp:run charPrIDRef="9">
       <hp:t>- 괄호 안 부가정보(직함, 소속)는 본문보다 작은 11pt로 처리하여 시각적 방해를 줄입니다.</hp:t>
     </hp:run>
@@ -762,20 +762,20 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
 
   <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
     <hp:run charPrIDRef="9"><hp:t>○ </hp:t></hp:run>
-    <hp:run charPrIDRef="34"><hp:t>(표 서체)</hp:t></hp:run>
+    <hp:run charPrIDRef="99"><hp:t>(표 서체)</hp:t></hp:run>
     <hp:run charPrIDRef="9"><hp:t> 돋움체 10pt를 기본으로 사용하며, 헤더 행은 볼드 처리합니다.</hp:t></hp:run>
   </hp:p>
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -789,7 +789,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -812,7 +812,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>용도</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>용도</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -823,7 +823,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>charPr ID</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>charPr ID</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -834,7 +834,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>서체 / 크기</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>서체 / 크기</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -845,7 +845,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="22" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>특징</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>특징</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -859,7 +859,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>본문</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>본문</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -870,7 +870,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>9</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>9</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -881,7 +881,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>함초롬바탕 14pt</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>함초롬바탕 14pt</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -892,7 +892,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>명조계 서체, 양쪽 정렬</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>명조계 서체, 양쪽 정렬</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -906,7 +906,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>본문 강조</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>본문 강조</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -917,7 +917,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>34</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>34</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -928,7 +928,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>휴먼명조 15pt bold</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>휴먼명조 15pt bold</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -939,7 +939,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>키워드만 bold, 동사 어미 제외</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>키워드만 bold, 동사 어미 제외</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -953,7 +953,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="136"><hp:t>표 헤더</hp:t></hp:run>
+                <hp:run charPrIDRef="10"><hp:t>표 헤더</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -964,7 +964,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="19" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>136</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>136</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -975,7 +975,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>돋움체 10pt bold</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>돋움체 10pt bold</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -986,7 +986,7 @@
             <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
             <hp:subList>
               <hp:p paraPrIDRef="0" styleIDRef="0">
-                <hp:run charPrIDRef="0"><hp:t>고딕계 서체, 가운데 정렬</hp:t></hp:run>
+                <hp:run charPrIDRef="109"><hp:t>고딕계 서체, 가운데 정렬</hp:t></hp:run>
               </hp:p>
             </hp:subList>
           </hp:tc>
@@ -997,7 +997,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -1011,18 +1011,18 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
 
   <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
     <hp:run charPrIDRef="9"><hp:t>○ </hp:t></hp:run>
-    <hp:run charPrIDRef="34"><hp:t>(박스 디자인)</hp:t></hp:run>
+    <hp:run charPrIDRef="99"><hp:t>(박스 디자인)</hp:t></hp:run>
     <hp:run charPrIDRef="9"><hp:t> 주의사항은 회색 점선 박스(bf25)로, 안내 정보는 파란 점선 박스(bf26)로 감싸 시각적으로 구분합니다.</hp:t></hp:run>
   </hp:p>
 
-  <hp:p id="0" paraPrIDRef="14" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+  <hp:p id="0" paraPrIDRef="15" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
     <hp:run charPrIDRef="9">
       <hp:t>- 네이비 배경(bf14) 위의 텍스트는 반드시 흰색(charPr 26, 55, 8)을 사용해야 가독성이 확보됩니다.</hp:t>
     </hp:run>
@@ -1030,7 +1030,7 @@
 
   <!-- spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
@@ -1065,7 +1065,7 @@
 
   <!-- final spacer -->
   <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
-    <hp:run charPrIDRef="1">
+    <hp:run charPrIDRef="5">
       <hp:t> </hp:t>
     </hp:run>
   </hp:p>
