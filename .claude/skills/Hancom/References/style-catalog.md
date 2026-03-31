@@ -6,153 +6,109 @@ For working XML examples of each pattern, see the design catalog: `templates/des
 
 ---
 
-## 1. Font Faces
-
-| ID | Font Name | Type | Role |
-|----|-----------|------|------|
-| 0 | 돋움체 | Sans-serif | Tables, metadata, small text |
-| 1 | 맑은 고딕 | Sans-serif | Captions, UI-style text |
-| 2 | 바탕 | Serif | Legacy body text |
-| 3 | 바탕체 | Serif | Legacy fixed-width |
-| 4 | 함초롬돋움 | Sans-serif | Title, headings |
-| 5 | 함초롬바탕 | Serif | **Primary body text** |
-| 6 | HY울릉도M | Display | Decorative (rare) |
-| 7 | HY헤드라인M | Display | **Section header titles** |
-| 8 | 휴먼명조 | Serif | **Bold body emphasis** |
-
----
-
-## 2. Character Styles (charPr)
-
-### Body Text
-
-| ID | Size | Font | Bold | Color | Use For |
-|----|------|------|------|-------|---------|
-| 9 | 14pt | 함초롬바탕 (5) | No | black | **Standard body text** |
-| 34 | 15pt | 휴먼명조 (8) | **Yes** | black | **Bold keyword emphasis** |
-| 7 | 15pt | 함초롬바탕 (5) | No | black | Large body (rare) |
-| 5 | 11pt | — | No | black | Parenthetical reduction |
+## 1. Character Styles (charPr)
 
 ### Titles and Headers
 
 | ID | Size | Font | Bold | Color | Use For |
 |----|------|------|------|-------|---------|
-| 128 | 26pt | 함초롬돋움 (4) | **Yes** | black | **Main document title** |
-| 26 | 17pt | HY헤드라인M (7) | No | **white** | **Section number on navy bg** |
-| 29 | 15pt | HY헤드라인M (7) | **Yes** | black | **Section header title** |
+| 19 | 26pt | 바탕체 | **Yes** | black | **Main document title** |
+| 1 | 16pt | HY울릉도M | No | black | **Section header number** |
+| 14 | 15pt | HY울릉도M | **Yes** | black | **Section header title** |
+| 9 | 16pt | 바탕체 | No | **#2E74B5 blue** | Blue accent text |
+
+### Body Text
+
+| ID | Size | Font | Bold | Color | Use For |
+|----|------|------|------|-------|---------|
+| 12 | 14pt | 함초롬돋움 | No | black | **Standard body text** |
+| 15 | 15pt | 함초롬바탕 | **Yes** | black | **Bold keyword emphasis** (□ items) |
+| 4 | 15pt | 함초롬바탕 | **Yes** | black, **shade=#FFD700** | **○-level heading with gold shade** |
+| 17 | 15pt | 맑은 고딕 | No | black | **Underline emphasis** (underline=BOTTOM) |
 
 ### Tables and Metadata
 
 | ID | Size | Font | Bold | Color | Use For |
 |----|------|------|------|-------|---------|
-| 109 | 12pt | 바탕 (2) | No | black | **Table body cells** |
-| 10 | 12pt | 돋움체 (0) | **Yes** | black | **Table header cells, row labels** |
-| 51 | 12pt | 맑은 고딕 (1) | **Yes** | black | **< Caption > text** |
-| 10 | 12pt | 돋움체 (0) | **Yes** | black | Small bold keywords |
+| 18 | 12pt | 바탕 | No | black | **Table body cells** |
+| 13 | 12pt | 돋움체 | **Yes** | black | **Table header cells, row labels** |
+| 16 | 12pt | 맑은 고딕 | **Yes** | black | **< Caption > text** |
+| 5 | 10pt | 바탕체 | No | black | Table alternative text |
 
 ### Special Purpose
 
 | ID | Size | Font | Bold | Color | Use For |
 |----|------|------|------|-------|---------|
-| 5 | 11pt | 함초롬돋움 (4) | No | black | **Spacer line** (small empty paragraph) |
-| 99 | 15pt | 맑은 고딕 (1) | No | black | **○-level underline emphasis** (underline=BOTTOM) |
-| 8 | 10pt | 돋움체 (0) | No | **white** | Text on dark background (small) |
-| 55 | 16pt | — | No | **white** | Text on dark background (large) |
+| 10 | 11pt | 바탕체 | No | black | **Spacer line** (empty paragraph) |
+| 0 | 10pt | 함초롬돋움 | No | black | Default small text |
+| 6 | 9pt | 바탕체 | No | black | Small compact text |
 
 ---
 
-## 3. Paragraph Styles (paraPr)
+## 2. Paragraph Styles (paraPr)
 
-### Safe IDs (use freely)
-
-| ID | Alignment | Left Indent | Use For |
-|----|-----------|-------------|---------|
-| 0 | JUSTIFY | 0 | **Default body paragraphs** |
-| 1 | JUSTIFY | 1500 | **□/○ bullet items** (first indent level) |
-| 14 | JUSTIFY | 1100 | **- sub-items** (second indent level) |
-| 15 | JUSTIFY | 2200 | **\* deep sub-items** (third indent level) |
-| 9 | JUSTIFY | 0 | English text (150% line spacing) |
-| 19 | CENTER | 0 | **Centered text** (titles, captions in body) |
-| 22 | CENTER | 0 | **Table cell content** (centered) |
-| 29 | RIGHT | 0 | **Right-aligned text** (dates, signatures) |
-| 33 | CENTER | 0 | **Section header title cell** |
+| ID | Alignment | Use For |
+|----|-----------|---------|
+| 0 | JUSTIFY | **Default body paragraphs** |
+| 1 | JUSTIFY (indented) | **□/○ bullet items** |
+| 15 | LEFT (deep indent) | **- sub-items, * deep sub-items** |
+| 19 | CENTER | **Centered text** (titles, captions) |
+| 20 | CENTER | Table cell center |
+| 21 | RIGHT | **Right-aligned text** (dates, signatures) |
+| 22 | CENTER | **Table cell content** |
 
 ### DANGEROUS IDs (never use for body text)
 
-| ID Range | Why Dangerous |
-|----------|---------------|
-| **2 - 8** | Connected to `heading type="OUTLINE"`. Triggers automatic numbering (1., 가., 3)) that you cannot control. The document will show unexpected numbers. |
+paraPr **2-8** are connected to outline headings and trigger automatic numbering.
 
 ---
 
-## 4. Border/Fill Styles (borderFill)
+## 3. Border/Fill Styles (borderFill)
 
-### Basic Borders
-
-| ID | Borders | Fill | Use For |
-|----|---------|------|---------|
-| 1 | NONE | none | Invisible (page border) |
-| 4 | SOLID 0.12mm all sides | none | **Standard table cell** |
-| 13 | SOLID 0.12mm all sides | none | Simple box (no diagonal) |
-
-### Colored Backgrounds (for table headers and boxes)
-
-| ID | Borders | Fill Color | Use For |
-|----|---------|------------|---------|
-| 14 | SOLID 0.3mm all sides | **#000066 (navy)** | **Section header number cell** — requires white text! |
-| 22 | SOLID 0.12mm all sides | **#D9D9D9 (medium gray)** | **Standard table header row** |
-| 23 | SOLID 0.12mm all sides | **#C5D4F0 (medium blue)** | **Comparison/process table header** |
-| 24 | SOLID 0.12mm top/L/R, DOUBLE_SLIM 0.5mm bottom | **#E5E5E5 (gray)** | Separator-style table header |
-| 25 | **SOLID 0.4mm** all sides, **#AAAAAA** | **#F5F5F5 (very light gray)** | **※ Note/warning box** |
-| 26 | **DASH** 0.12mm all sides | **#ECF2FA (light blue)** | **Info/guide box** |
-
-### Cell Border Combinations (for complex tables)
-
-| ID | Top | Right | Bottom | Left | Use For |
-|----|-----|-------|--------|------|---------|
-| 5 | SOLID | NONE | SOLID | SOLID | Left+Top+Bottom edge cell |
-| 6 | SOLID | SOLID | SOLID | NONE | Right+Top+Bottom edge cell |
-| 7 | SOLID | NONE | SOLID | NONE | Top+Bottom only (interior) |
-| 8 | NONE | NONE | SOLID | SOLID | Left+Bottom edge cell |
-| 9 | NONE | SOLID | SOLID | NONE | Right+Bottom edge cell |
-| 10 | NONE | NONE | SOLID | NONE | Bottom only (interior) |
+| ID | Fill | Borders | Use For |
+|----|------|---------|---------|
+| 1 | none | NONE | Invisible (page border) |
+| 2 | **#E3F4E3 (light green)** | SOLID | **Section header cell** |
+| 3 | none | partial (L+R top) | Section header bracket piece |
+| 4 | none | partial (L+Top+Bottom) | Cell border combo |
+| 5 | none | partial (L only) | Cell border combo |
+| 6 | none | partial (R+Bottom+L) | Cell border combo |
+| 9 | none | SOLID all sides | **Standard table cell** |
+| 11 | **#D9D9D9 (gray)** | SOLID all | **Gray table header** |
+| 12 | **#C5D4F0 (blue)** | SOLID all | **Blue comparison table header** |
+| 13 | **#F5F5F5 (light gray)** | SOLID 0.4mm | **※ Note/warning box** |
+| 14 | **#ECF2FA (light blue)** | DASH all | **Info/guide box** |
 
 ---
 
-## 5. Common Style Combinations
+## 4. Common Style Combinations
 
-These are the most frequently used combinations. The design catalog contains working XML for each.
-
-| Pattern | charPr | paraPr | borderFill | Notes |
-|---------|--------|--------|------------|-------|
-| Body paragraph | 9 | 0 | — | Add 2× full-width space indent |
-| Spacer line | 5 | 0 | — | 11pt, content: single space " " |
-| Main title | 128 | 19 | — | Centered, 26pt bold |
-| Right-aligned date | 9 | 29 | — | |
-| □ major topic | 9 + 34 | 1 | — | Bold keyword in separate run |
-| ○ sub-topic | 9 + 34 | 1 | — | Same as □ with ○ symbol |
-| - sub-item | 9 | 14 | — | |
-| * deep sub-item | 9 | 15 | — | |
-| < Caption > | 51 | 19 | — | Escape < > as &amp;lt; &amp;gt; |
-| Table header cell | 10 | 22 | 22 or 23 | 12pt bold, gray or blue background |
-| Table body cell | 109 | 19 or 0 | 4 | 12pt, center or justify |
-| Section # cell | 10 | 22 | 19 | 12pt bold, green L+T bracket |
-| Section title cell | 29 | 33 | 20 | Bold heading, green R+T+B bracket |
-| Section title cell | 29 | 33 | 4 | Bold heading font |
-| Note box | 1 | 0 | 25 | 1x1 table, dashed gray |
-| Info box | 0 | 0 | 26 | 1x1 table, dashed blue |
+| Pattern | charPr | paraPr | borderFill |
+|---------|--------|--------|------------|
+| Body paragraph | 12 | 0 | — |
+| Spacer line | 10 | 0 | — |
+| Main title | 19 | 19 | — |
+| Right-aligned date | 12 | 21 | — |
+| □ major topic | 12 + 15 | 1 | — |
+| ○ sub-topic (gold shade) | 12 + **4** | 1 | — |
+| - sub-item | 12 | **15** | — |
+| Bold emphasis | 15 + 12 | 0 | — |
+| Underline emphasis | 17 + 12 | 1 | — |
+| < Caption > | 16 | 19 | — |
+| Section header # cell | 1 | 22 | **2** (green) |
+| Section header title | 14 | 22 | 9 |
+| Table header cell | 13 | 22 | 11 or 12 |
+| Table body cell | 18 | 22 or 0 | 9 |
+| Note box (※) | 0 | 0 | 13 |
+| Info box | 18 | 0 | 14 |
 
 ---
 
-## 6. Safety Checklist
+## 5. Safety Checklist
 
-Before finalizing section0.xml, verify:
-
-- [ ] No paraPrIDRef in range 2-8 used outside of intentional outline headings
-- [ ] All charPrIDRef values ≤ 136 (max ID in header.xml)
-- [ ] All paraPrIDRef values ≤ 62 (max ID in header.xml)
-- [ ] All borderFillIDRef values ≤ 26 (max ID in header.xml)
-- [ ] Navy background cells (bf14) use white text charPr (26, 8, or 55)
-- [ ] Table rowCnt/colCnt match actual `<hp:tr>` and `<hp:tc>` counts
-- [ ] Each `<hp:tc>` has all required attributes: name, header, hasMargin, protect, editable, dirty, borderFillIDRef
-- [ ] Each `<hp:tc>` has children in order: cellAddr, cellSpan, cellSz, cellMargin, subList
+- [ ] All charPrIDRef values ≤ 19
+- [ ] All paraPrIDRef values ≤ 22
+- [ ] All borderFillIDRef values ≤ 14
+- [ ] No paraPrIDRef in range 2-8
+- [ ] Table rowCnt/colCnt match actual rows/columns
+- [ ] Section header uses 2x4 table structure (copy from catalog exactly)

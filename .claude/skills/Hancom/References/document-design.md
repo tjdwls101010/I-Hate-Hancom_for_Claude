@@ -48,12 +48,12 @@ Use this mapping to translate markdown elements into catalog patterns:
 
 | Markdown Element | Design Pattern | Key Style IDs |
 |-----------------|----------------|---------------|
-| `# Heading` | Section Header (1x2 table, new page) | bf14 + bf4, charPr 26 + 29 |
-| `## Heading` | □ Major Topic (NOT a section header) | charPr 34 (bold) + 9, paraPr 1 |
-| `**bold text**` | Bold Emphasis (keyword bold) | charPr 34 (bold) + 9 (normal) |
-| `- **keyword** text` | □ / ○ topic with bold label | charPr 9 + 34 + 9, paraPr 1 |
-| `- list item` | ○ sub-topic or - sub-item | paraPr 1, 14, 15 |
-| Indented `- item` | - sub-item (deeper indent) | paraPr 14 or 15 |
+| `# Heading` | Section Header (2x4 table, new page) | bf2 (green), charPr 1 + 14 |
+| `## Heading` | □ Major Topic (NOT a section header) | charPr 15 (bold) + 12, paraPr 1 |
+| `**bold text**` | Bold Emphasis (keyword bold) | charPr 15 (bold) + 12 (normal) |
+| `- **keyword** text` | □ / ○ topic with bold label | charPr 12 + 15 + 12, paraPr 1 |
+| `- list item` | ○ sub-topic (gold shade) | charPr **4** (shaded), paraPr 1 |
+| Indented `- item` | - sub-item (deeper indent) | charPr 12, paraPr **15** |
 | `> blockquote` | Note Box (※) | bf25 (gray dashed) |
 | Tables | Data Table or Comparison Table | bf22 (gray) or bf23 (blue) header |
 | `code block` | Info Box | bf26 (blue dashed) |
@@ -79,21 +79,23 @@ These subtle techniques are what make a document look professionally crafted:
 Every body paragraph starts with two ideographic spaces (U+3000 `　`). This creates a visual indent without relying on paragraph-level indentation. Do NOT apply to: table cells, titles, captions, or note box content.
 
 ### Micro-spacing (11pt spacers)
-Between sections, use a spacer paragraph with charPr 5 (11pt) containing a single space. This creates ~80% of a full line's height — enough breathing room without wasting space. Never use a full-size (14pt) empty paragraph as a spacer.
+Use spacer paragraphs with charPr 10 (11pt) containing a single space `" "`.
 
-### ○-level underline emphasis
-Use charPr 99 (15pt 맑은고딕, underline BOTTOM) for ○-level keyword labels. This distinguishes ○ items from □ items and surrounding body text with a visible underline decoration.
+- **Double spacer (2 lines)**: between □/○ bullet items for strong visual separation. This is the standard spacing between major content blocks.
+- **Single spacer (1 line)**: before/after tables, captions, boxes, and between minor elements.
+
+Never use full-size (14pt) empty paragraphs as spacers.
+
+### ○-level gold shading
+Use charPr **4** (15pt 함초롬바탕 bold, shadeColor=#FFD700) for ○-level keyword labels. The gold background shading makes ○ items visually distinct from □ items without needing color or underline.
 
 ### Bold keyword technique
 In body text, bold only the key noun phrase, not the entire sentence. Critically, verb endings (-했다, -됩니다, -을 추진) must stay in normal weight. This creates a "journalist's highlight" effect.
 
 **Example (split into runs):**
-- Run 1 (charPr 9, normal): `　　정부는 `
-- Run 2 (charPr 34, bold): `창업 생태계 혁신 방안`
-- Run 3 (charPr 9, normal): `을 발표하였다.`
-
-### Parenthetical reduction
-Names, titles, and supplementary info in parentheses use a smaller font (charPr 5, 11pt) than the body text (charPr 9, 14pt). This prevents parenthetical info from visually competing with the main content.
+- Run 1 (charPr 12, normal): `　　정부는 `
+- Run 2 (charPr 15, bold): `창업 생태계 혁신 방안`
+- Run 3 (charPr 12, normal): `을 발표하였다.`
 
 ### Font hierarchy
 - **Serif fonts** (함초롬바탕, 휴먼명조) → body text, emphasis
@@ -110,11 +112,14 @@ Every table header row must have a colored background. Without it, headers are i
 - **Gray+double bottom (bf24)** — For separator-style headers
 
 ### Section headers are tables
-Major section dividers (corresponding to `# Heading` in markdown) are 1x2 tables with green bracket borders:
-- Left cell: Green top-left bracket (bf19), bold number (charPr 10), centered
-- Right cell: Green right+top+bottom bracket (bf20), bold title (charPr 29)
+Major section dividers (corresponding to `# Heading` in markdown) are 2x4 tables with green fill:
+- Cell (0,0): Light green fill (bf2), number text (charPr 1, 16pt HY울릉도M), rowSpan=2
+- Cell (1,0): Thin spacer column, rowSpan=2
+- Cell (2,0): Title text (charPr 14, 15pt HY울릉도M bold), rowSpan=2
+- Cell (3,0)+(3,1): Decorative corner cells (2 rows)
 - Not full-width — approximately 20000 HWPUNIT (~40% of content area)
 - The paragraph containing this table has `pageBreak="1"` to start a new page
+- **Copy the section header XML from the catalog exactly** — do not simplify the 2x4 structure
 
 ### Box patterns
 - **Note box (bf25)**: Solid gray border + very light gray fill. For ※ warnings, prerequisites.

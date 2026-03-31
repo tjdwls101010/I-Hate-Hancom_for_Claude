@@ -101,10 +101,10 @@ These are hard technical requirements. Violating them crashes Hancom Office:
 2. **Don't write secPr** — `build_hwpx.py` injects it from the template automatically
 3. **Tables go directly inside `<hp:run>`** — never wrap in `<hp:ctrl>`
 4. **`<hp:tc>` needs all attributes**: `name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="N"`
-5. **paraPr 2-8 are DANGEROUS** — they trigger auto-numbering. Use 0, 1, 14, 15 for indentation
-6. **Dark backgrounds need white text** — borderFill 14 (navy) requires charPr 26/8/55 (white)
-7. **Table rowCnt/colCnt must match actual rows/columns**
-8. **cellAddr must be sequential** per row, accounting for colSpan
+5. **paraPr 2-8 are DANGEROUS** — they trigger auto-numbering. Use 0, 1, 15 for indentation
+6. **Table rowCnt/colCnt must match actual rows/columns**
+7. **cellAddr must be sequential** per row, accounting for colSpan
+8. **Section header is a complex 2x4 table** — copy from catalog exactly, don't simplify
 
 ## Script Paths
 
