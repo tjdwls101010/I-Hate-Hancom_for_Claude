@@ -64,8 +64,10 @@ Use this mapping to translate markdown elements into catalog patterns:
 
 Korean government documents use a strict visual hierarchy instead of numbered lists:
 
-- **□ (네모)** — Major topics. Always followed by a bold keyword in parentheses: `□ (사업목적) 설명 텍스트`
-- **○ (동그라미)** — Sub-topics under □. Same keyword+explanation format.
+- **□ (네모)** — Major topics. Two usage patterns:
+  - **Section-level** (`## Heading`): `□ 일반/기술트랙` — NO parentheses, just the topic name
+  - **Item-level** (`- **keyword**`): `□ (사업목적) 설명 텍스트` — parentheses around the label, followed by explanation
+- **○ (동그라미)** — Sub-topics under □. Same two patterns: `○ 로컬트랙` (section) or `○ (신청자격) 설명` (item)
 - **- (대시)** — Details under ○. Plain text, deeper indent.
 - **\* (별표)** — Exceptions, footnotes, additional notes. Deepest indent.
 
@@ -81,8 +83,8 @@ Every body paragraph starts with two ideographic spaces (U+3000 `　`). This cre
 ### Micro-spacing (11pt spacers)
 Use spacer paragraphs with charPr 10 (11pt) containing a single space `" "`.
 
-- **Double spacer (2 lines)**: between □/○ bullet items for strong visual separation. This is the standard spacing between major content blocks.
-- **Single spacer (1 line)**: before/after tables, captions, boxes, and between minor elements.
+- **Double spacer (2 lines)**: before section headers (page transitions) — creates a clear visual break before a new major section.
+- **Single spacer (1 line)**: between □/○ bullet items, before/after tables, captions, and boxes.
 
 Never use full-size (14pt) empty paragraphs as spacers.
 
