@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<hs:sec xmlns:hs="http://www.hancom.co.kr/hwpml/2011/section"
+  xmlns:hp="http://www.hancom.co.kr/hwpml/2011/paragraph"
+  xmlns:hp10="http://www.hancom.co.kr/hwpml/2016/paragraph"
+  xmlns:hc="http://www.hancom.co.kr/hwpml/2011/core"
+  xmlns:hh="http://www.hancom.co.kr/hwpml/2011/head"
+  xmlns:hwpunitchar="http://www.hancom.co.kr/hwpml/2016/HwpUnitChar">
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Main Title                                              -->
+  <!-- charPr 128 = 26pt 함초롬돋움 bold, paraPr 19 = CENTER            -->
+  <!-- Use for: Document main title, announcement title                 -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="19" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="128">
+      <hp:t>「디자인 패턴 카탈로그」활용 가이드</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Small Empty Line (spacer)                               -->
+  <!-- charPr 1 = 9pt, paraPr 0 = default                              -->
+  <!-- Use for: Visual breathing room between sections                  -->
+  <!-- Tip: Use a single space " " as content to avoid empty-run bugs   -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Body Paragraph with Full-Width Indent                   -->
+  <!-- charPr 9 = 14pt 함초롬바탕 (serif body), paraPr 0 = JUSTIFY      -->
+  <!-- The two ideographic spaces at start create visual indent         -->
+  <!-- Use for: Standard body text, introductory paragraphs             -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9">
+      <hp:t>　　이 문서는 한컴문서(HWPX) 생성 시 사용할 수 있는 디자인 패턴의 카탈로그입니다. 각 패턴은 실제 정부 공문서에서 추출한 것으로, XML 주석에 용도와 스타일 ID가 명시되어 있습니다.</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Right-Aligned Text                                      -->
+  <!-- charPr 9 = 14pt body, paraPr 29 = RIGHT                         -->
+  <!-- Use for: Date, issuing authority, signatures                     -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="29" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9">
+      <hp:t>2026년 3월 31일</hp:t>
+    </hp:run>
+  </hp:p>
+  <hp:p id="0" paraPrIDRef="29" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9">
+      <hp:t>카탈로그 관리부서</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Note Box (※ warning/caution)                           -->
+  <!-- 1x1 table with borderFill 25 = dashed gray bg (#EDEDED)         -->
+  <!-- charPr 1 = 9pt for compact note text                            -->
+  <!-- Use for: Warnings, prerequisites, important notices              -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="0">
+      <hp:tbl rowCnt="1" colCnt="1" cellSpacing="0" borderFillIDRef="4"
+              pageBreak="CELL" repeatHeader="0" id="0">
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="25">
+            <hp:cellAddr colAddr="0" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="48000" height="1800"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="1"><hp:t>※ 이 카탈로그의 각 패턴은 XML 주석으로 용도가 표시되어 있으므로, 필요한 패턴의 XML을 복사하여 내용만 교체하면 됩니다.</hp:t></hp:run>
+              </hp:p>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="1"><hp:t>※ 스타일 ID(charPrIDRef, paraPrIDRef, borderFillIDRef)는 header.xml에 정의된 값이므로 임의로 변경하지 마십시오.</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+      </hp:tbl>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Content Wrapper Box                                     -->
+  <!-- 1x1 table (borderFill 4 = solid thin border, no fill)           -->
+  <!-- Wraps related content: intro text + nested table or list         -->
+  <!-- Use for: Page 1 summary section, grouping related elements       -->
+  <!-- The wrapper creates visual structure and "boxed section" feel     -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="0">
+      <hp:tbl rowCnt="1" colCnt="1" cellSpacing="0" borderFillIDRef="4"
+              pageBreak="CELL" repeatHeader="0" id="0">
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="0" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="48000" height="3000"/>
+            <hp:cellMargin left="510" right="510" top="283" bottom="283"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>래퍼 박스 안의 소개 텍스트입니다. 관련된 내용을 하나의 테두리 안에 그룹화합니다.</hp:t></hp:run>
+              </hp:p>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="1"><hp:t> </hp:t></hp:run>
+              </hp:p>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>이 안에 표나 목록 등 관련 콘텐츠가 포함됩니다.</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+      </hp:tbl>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Table Caption                                           -->
+  <!-- charPr 51 = 12pt 맑은고딕 bold, paraPr 19 = CENTER               -->
+  <!-- Angle brackets < > are XML-escaped as &lt; &gt;                  -->
+  <!-- Use for: Centered caption text above a data table                -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="19" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="51">
+      <hp:t>&lt; 디자인 패턴 요약표 &gt;</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Data Table (gray header)                                -->
+  <!-- Header row: borderFill 22 = light gray (#F2F2F2) solid           -->
+  <!--   charPr 136 = 10pt 돋움체 bold (header text)                    -->
+  <!--   paraPr 22 = CENTER (table cell)                                -->
+  <!-- Body rows: borderFill 4 = solid border (no fill)                 -->
+  <!--   charPr 0 = 10pt 돋움체 normal (body text)                      -->
+  <!--   paraPr 19 = CENTER (for centered cells)                        -->
+  <!--   paraPr 0 = JUSTIFY (for left-aligned text cells)               -->
+  <!-- Use for: Standard data tables, comparison tables, summary tables -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="0">
+      <hp:tbl rowCnt="4" colCnt="3" cellSpacing="0" borderFillIDRef="4"
+              pageBreak="CELL" repeatHeader="0" id="0">
+        <!-- Header row (gray background) -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="22">
+            <hp:cellAddr colAddr="0" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>구분</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="22">
+            <hp:cellAddr colAddr="1" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>주요 내용</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="22">
+            <hp:cellAddr colAddr="2" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>비고</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+        <!-- Data row 1 -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="0" rowAddr="1"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>제목 패턴</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="1" rowAddr="1"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>26pt 함초롬돋움 bold, 가운데 정렬</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="2" rowAddr="1"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>charPr 128</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+        <!-- Data row 2 -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="0" rowAddr="2"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>본문 패턴</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="1" rowAddr="2"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>14pt 함초롬바탕, 양쪽 정렬, 전각 공백 들여쓰기</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="2" rowAddr="2"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>charPr 9</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+        <!-- Data row 3 -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="0" rowAddr="3"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>표 패턴</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="1" rowAddr="3"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>회색 헤더(bf22) + 데이터 셀(bf4)</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="2" rowAddr="3"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>borderFill 22, 23</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+      </hp:tbl>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Section Header (numbered, with page break)              -->
+  <!-- 1x2 table: navy number cell (bf14) + title cell (bf4)           -->
+  <!-- Number cell: charPr 26 = 17pt HY헤드라인M white on navy          -->
+  <!-- Title cell: charPr 29 = 15pt HY헤드라인M bold                    -->
+  <!-- paraPr 22 = CENTER for number, paraPr 33 = CENTER for title      -->
+  <!-- Set pageBreak="1" on the paragraph to start a new page           -->
+  <!-- Use for: Major section divisions (# Heading 1 in markdown)       -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="1" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="0">
+      <hp:tbl rowCnt="1" colCnt="2" cellSpacing="0" borderFillIDRef="4"
+              pageBreak="CELL" repeatHeader="0" id="0">
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="14">
+            <hp:cellAddr colAddr="0" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="4000" height="1400"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="26"><hp:t>1</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="1" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="44000" height="1400"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="33" styleIDRef="0">
+                <hp:run charPrIDRef="29"><hp:t>주요 디자인 패턴</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+      </hp:tbl>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Major Topic (□ marker)                                 -->
+  <!-- "□ " prefix + bold keyword in () + normal body text              -->
+  <!-- charPr 9 = body, charPr 34 = 15pt bold emphasis                  -->
+  <!-- paraPr 1 = JUSTIFY with left indent                              -->
+  <!-- Use for: First-level bullet items (## or bold items in markdown) -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9"><hp:t>□ </hp:t></hp:run>
+    <hp:run charPrIDRef="34"><hp:t>(텍스트 패턴)</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t> 본문, 제목, 날짜 등 텍스트 기반 요소의 서식 패턴으로 구성되어 있으며, 각 패턴은 고유한 스타일 ID 조합을 사용합니다.</hp:t></hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Sub-Topic (○ marker)                                   -->
+  <!-- "○ " prefix + bold keyword + normal text                        -->
+  <!-- Same charPr/paraPr as □ but uses ○ symbol                       -->
+  <!-- Use for: Second-level items under □ topics                      -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9"><hp:t>○ </hp:t></hp:run>
+    <hp:run charPrIDRef="34"><hp:t>(제목 패턴)</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t> 문서의 첫 페이지 상단에 26pt 함초롬돋움 볼드체로 가운데 정렬하여 배치합니다.</hp:t></hp:run>
+  </hp:p>
+
+  <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9"><hp:t>○ </hp:t></hp:run>
+    <hp:run charPrIDRef="34"><hp:t>(본문 패턴)</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t> 14pt 함초롬바탕으로 양쪽 정렬하되, 각 문단의 시작에 전각 공백 2개를 삽입하여 시각적 들여쓰기를 구현합니다.</hp:t></hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Sub-Item (- dash marker)                                -->
+  <!-- Simple dash prefix, charPr 9 = body text                         -->
+  <!-- paraPr 14 = JUSTIFY with deeper indent (left=1100)               -->
+  <!-- Use for: Third-level details, sub-explanations                   -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="14" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9">
+      <hp:t>- 전각 공백은 유니코드 U+3000(　)이며, 일반 공백보다 2배 넓어 들여쓰기 효과가 뚜렷합니다.</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Deep Sub-Item (* asterisk marker)                       -->
+  <!-- paraPr 15 = JUSTIFY with even deeper indent (left=2200)          -->
+  <!-- Use for: Fourth-level footnotes, exceptions, additional details  -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="15" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9">
+      <hp:t>* 표 셀 내부와 제목에는 전각 공백을 삽입하지 않습니다.</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Bold Emphasis (keyword bold + verb normal)              -->
+  <!-- Split into two runs: charPr 34 (bold) + charPr 9 (normal)       -->
+  <!-- The verb ending (-하였다, -됩니다) stays in normal weight          -->
+  <!-- Use for: Highlighting key policies, achievements, decisions      -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9"><hp:t>　　디자인 카탈로그를 활용하면 </hp:t></hp:run>
+    <hp:run charPrIDRef="34"><hp:t>문서 품질의 일관성을 크게 향상</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t>시킬 수 있으며, </hp:t></hp:run>
+    <hp:run charPrIDRef="34"><hp:t>제작 시간을 대폭 단축</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t>할 수 있습니다.</hp:t></hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Parenthetical Reduction (smaller text in parentheses)   -->
+  <!-- charPr 5 = 11pt (2pt smaller than body 14pt) for parenthetical   -->
+  <!-- Use for: Titles, affiliations, supplementary info in parentheses -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9"><hp:t>　　카탈로그 관리 담당자</hp:t></hp:run>
+    <hp:run charPrIDRef="5"><hp:t>(디자인팀 팀장 홍길동)</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t>는 매 분기 패턴을 갱신합니다.</hp:t></hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- caption -->
+  <hp:p id="0" paraPrIDRef="19" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="51">
+      <hp:t>&lt; 패턴별 활용 비교표 &gt;</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Comparison Table (blue header)                          -->
+  <!-- Header row: borderFill 23 = light blue (#DFE6F7) solid           -->
+  <!-- Body rows: borderFill 4 = standard solid border                  -->
+  <!-- Use for: Comparison tables, process summaries, category tables   -->
+  <!-- Note: Uses same cell structure as data table, only bf differs    -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="0">
+      <hp:tbl rowCnt="3" colCnt="3" cellSpacing="0" borderFillIDRef="4"
+              pageBreak="CELL" repeatHeader="0" id="0">
+        <!-- Header row (blue background) -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="23">
+            <hp:cellAddr colAddr="0" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>패턴 유형</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="23">
+            <hp:cellAddr colAddr="1" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>초급자 적용</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="23">
+            <hp:cellAddr colAddr="2" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>전문가 적용</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+        <!-- Data row 1 -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="0" rowAddr="1"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>섹션 구분</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="1" rowAddr="1"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>큰 글씨 제목만 사용</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="2" rowAddr="1"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>번호 셀(네이비) + 제목 셀 조합 표</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+        <!-- Data row 2 -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="0" rowAddr="2"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>빈 줄 처리</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="1" rowAddr="2"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>본문 크기(14pt)의 빈 줄</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="2" rowAddr="2"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="19000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>소형(9pt) 빈 줄로 미세 간격 조절</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+      </hp:tbl>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Info/Guide Box (dashed blue)                            -->
+  <!-- 1x1 table with borderFill 26 = dashed blue bg (#ECF2FA)         -->
+  <!-- charPr 0 = 10pt for guide text, charPr 136 = bold for labels    -->
+  <!-- Use for: Informational callouts, guides, tip boxes               -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="0">
+      <hp:tbl rowCnt="1" colCnt="1" cellSpacing="0" borderFillIDRef="4"
+              pageBreak="CELL" repeatHeader="0" id="0">
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="26">
+            <hp:cellAddr colAddr="0" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="48000" height="3000"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <!-- ============================================ -->
+              <!-- PATTERN: Numbered List (①②③ inside box)     -->
+              <!-- Use for: Sequential steps, ordered criteria  -->
+              <!-- ============================================ -->
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>카탈로그 활용 절차</hp:t></hp:run>
+              </hp:p>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>① 마크다운 문서의 구조를 분석하여 필요한 패턴을 식별합니다.</hp:t></hp:run>
+              </hp:p>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>② 카탈로그에서 해당 패턴의 XML을 복사합니다.</hp:t></hp:run>
+              </hp:p>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>③ 텍스트 내용만 교체하고 스타일 ID는 그대로 유지합니다.</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+      </hp:tbl>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Section Header #2 (shows repetition, new page)         -->
+  <!-- Same structure as Section Header #1, different number and title  -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="1" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="0">
+      <hp:tbl rowCnt="1" colCnt="2" cellSpacing="0" borderFillIDRef="4"
+              pageBreak="CELL" repeatHeader="0" id="0">
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="14">
+            <hp:cellAddr colAddr="0" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="4000" height="1400"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="26"><hp:t>2</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="1" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="44000" height="1400"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="33" styleIDRef="0">
+                <hp:run charPrIDRef="29"><hp:t>스타일 참조 안내</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+      </hp:tbl>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- □ topic under section 2 -->
+  <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9"><hp:t>□ </hp:t></hp:run>
+    <hp:run charPrIDRef="34"><hp:t>(글꼴 체계)</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t> 문서의 서체는 명확한 위계를 따릅니다. 명조체(함초롬바탕, 휴먼명조)는 본문에, 고딕체(돋움체, 맑은고딕)는 표와 메타데이터에 사용합니다.</hp:t></hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ○ sub-topics -->
+  <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9"><hp:t>○ </hp:t></hp:run>
+    <hp:run charPrIDRef="34"><hp:t>(본문 서체)</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t> 함초롬바탕 14pt를 기본으로 사용하며, 강조가 필요한 부분은 휴먼명조 15pt 볼드를 적용합니다.</hp:t></hp:run>
+  </hp:p>
+
+  <hp:p id="0" paraPrIDRef="14" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9">
+      <hp:t>- 볼드 강조 시 동사 어미(-했다, -됩니다)는 일반 서체로 유지하여 자연스러운 시각적 리듬을 만듭니다.</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <hp:p id="0" paraPrIDRef="14" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9">
+      <hp:t>- 괄호 안 부가정보(직함, 소속)는 본문보다 작은 11pt로 처리하여 시각적 방해를 줄입니다.</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9"><hp:t>○ </hp:t></hp:run>
+    <hp:run charPrIDRef="34"><hp:t>(표 서체)</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t> 돋움체 10pt를 기본으로 사용하며, 헤더 행은 볼드 처리합니다.</hp:t></hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- caption for another table -->
+  <hp:p id="0" paraPrIDRef="19" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="51">
+      <hp:t>&lt; 주요 스타일 ID 참조표 &gt;</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: 4-Column Data Table (wider variety)                     -->
+  <!-- Shows that tables can have varying column counts                 -->
+  <!-- First column bold (charPr 136) for row labels                    -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="0">
+      <hp:tbl rowCnt="4" colCnt="4" cellSpacing="0" borderFillIDRef="4"
+              pageBreak="CELL" repeatHeader="0" id="0">
+        <!-- Header row -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="22">
+            <hp:cellAddr colAddr="0" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="8000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>용도</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="22">
+            <hp:cellAddr colAddr="1" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>charPr ID</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="22">
+            <hp:cellAddr colAddr="2" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="16000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>서체 / 크기</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="22">
+            <hp:cellAddr colAddr="3" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="14000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="22" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>특징</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+        <!-- Row 1 -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="0" rowAddr="1"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="8000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>본문</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="1" rowAddr="1"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>9</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="2" rowAddr="1"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="16000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>함초롬바탕 14pt</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="3" rowAddr="1"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="14000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>명조계 서체, 양쪽 정렬</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+        <!-- Row 2 -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="0" rowAddr="2"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="8000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>본문 강조</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="1" rowAddr="2"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>34</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="2" rowAddr="2"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="16000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>휴먼명조 15pt bold</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="3" rowAddr="2"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="14000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>키워드만 bold, 동사 어미 제외</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+        <!-- Row 3 -->
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="0" rowAddr="3"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="8000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="136"><hp:t>표 헤더</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="1" rowAddr="3"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="10000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="19" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>136</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="2" rowAddr="3"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="16000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>돋움체 10pt bold</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="4">
+            <hp:cellAddr colAddr="3" rowAddr="3"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="14000" height="1200"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="0"><hp:t>고딕계 서체, 가운데 정렬</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+      </hp:tbl>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- □ another topic -->
+  <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9"><hp:t>□ </hp:t></hp:run>
+    <hp:run charPrIDRef="34"><hp:t>(표 디자인)</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t> 표의 헤더 행에는 반드시 배경색을 적용합니다. 회색(bf22)은 일반 데이터 표에, 파랑(bf23)은 비교·프로세스 표에 사용합니다.</hp:t></hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <hp:p id="0" paraPrIDRef="1" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9"><hp:t>○ </hp:t></hp:run>
+    <hp:run charPrIDRef="34"><hp:t>(박스 디자인)</hp:t></hp:run>
+    <hp:run charPrIDRef="9"><hp:t> 주의사항은 회색 점선 박스(bf25)로, 안내 정보는 파란 점선 박스(bf26)로 감싸 시각적으로 구분합니다.</hp:t></hp:run>
+  </hp:p>
+
+  <hp:p id="0" paraPrIDRef="14" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="9">
+      <hp:t>- 네이비 배경(bf14) 위의 텍스트는 반드시 흰색(charPr 26, 55, 8)을 사용해야 가독성이 확보됩니다.</hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN: Closing Note Box (final ※ reminder)                    -->
+  <!-- Shows that note boxes can appear anywhere in the document        -->
+  <!-- ================================================================ -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="0">
+      <hp:tbl rowCnt="1" colCnt="1" cellSpacing="0" borderFillIDRef="4"
+              pageBreak="CELL" repeatHeader="0" id="0">
+        <hp:tr>
+          <hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="25">
+            <hp:cellAddr colAddr="0" rowAddr="0"/>
+            <hp:cellSpan colSpan="1" rowSpan="1"/>
+            <hp:cellSz width="48000" height="1800"/>
+            <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+            <hp:subList>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="1"><hp:t>※ paraPr 2~8번은 자동 번호 매기기가 활성화되므로 일반 본문에 절대 사용하지 마십시오.</hp:t></hp:run>
+              </hp:p>
+              <hp:p paraPrIDRef="0" styleIDRef="0">
+                <hp:run charPrIDRef="1"><hp:t>※ header.xml은 직접 생성하지 말고 반드시 templates/base/에 포함된 파일을 사용하십시오.</hp:t></hp:run>
+              </hp:p>
+            </hp:subList>
+          </hp:tc>
+        </hp:tr>
+      </hp:tbl>
+    </hp:run>
+  </hp:p>
+
+  <!-- final spacer -->
+  <hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">
+    <hp:run charPrIDRef="1">
+      <hp:t> </hp:t>
+    </hp:run>
+  </hp:p>
+
+</hs:sec>

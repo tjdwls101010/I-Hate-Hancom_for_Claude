@@ -1,433 +1,138 @@
-# 한국 정부 공문서 디자인 원칙
+# Document Design Guide
 
-> 5건의 정부 보도자료(질병관리청, 과기정통부, 중기부, 수도권기상청, 기후에너지환경부) 교차 분석에서 추출한 디자인 원칙.
-> 이 문서는 "규칙 목록"이 아닌, 각 관습이 존재하는 **이유**를 설명한다.
+This guide explains the *principles* behind Korean government document design — the WHY behind each visual choice. For the actual XML patterns, see the design catalog at `templates/design-catalog/section0.xml`.
 
----
+## Core Values
 
-## 1. 문서 구조: 신뢰와 효율의 골격
+Korean government documents optimize for three things simultaneously:
 
-정부 문서는 **"누가, 언제, 무엇을"** 즉시 파악할 수 있도록 설계되어 있다.
-독자는 바쁜 기자, 공무원, 국민이므로 문서 전체를 읽지 않고도 핵심을 잡을 수 있어야 한다.
+1. **Authority** — The document must look official. Color restraint (only navy/gray accents), justified text, serif body fonts, and structured headers all signal institutional credibility.
 
-### 표준 구성 순서
+2. **Scannability** — Readers (legislators, executives, journalists) need to extract key info in 30 seconds. The □/○/- hierarchy, bold keyword markers, and table-based section headers exist for rapid visual scanning.
 
-```
-┌─────────────────────────────────────┐
-│  헤더 영역 (표 형식)                    │
-│  ┌───────────────────────────────┐  │
-│  │ 부처 로고  │  "보도자료"       │  │
-│  │ 보도시점   │  배포일자         │  │
-│  │ 담당부서   │  담당자/연락처     │  │
-│  └───────────────────────────────┘  │
-├─────────────────────────────────────┤
-│  제목 (20-26pt, 굵게, 가운데 정렬)      │
-│  부제목 (14-16pt, 선택적)              │
-├─────────────────────────────────────┤
-│                                     │
-│  본문                                │
-│  □ 대주제                            │
-│    ㅇ 세부 설명                       │
-│      - 구체적 내용                    │
-│        * 부가 정보                    │
-│                                     │
-│  ┌─────────────────────────────┐    │
-│  │       표 (데이터 요약)         │    │
-│  └─────────────────────────────┘    │
-│                                     │
-├─────────────────────────────────────┤
-│  붙임. 첨부파일 목록                    │
-│  담당부서 정보                         │
-└─────────────────────────────────────┘
-```
+3. **Information density** — Government announcements pack enormous detail into few pages. Micro-spacing (9pt spacers instead of 14pt blank lines), compact tables, and indentation hierarchy compress information without sacrificing readability.
 
-### 왜 이 순서인가
+## Page Structure
 
-- **헤더가 표 형식인 이유**: 보도시점, 담당자 등 메타정보는 자유 텍스트가 아닌 표로 구조화한다. 기자가 "이 자료를 언제 보도해도 되는가", "문의처가 어디인가"를 0.5초 안에 파악하게 하기 위함이다.
-- **제목이 본문과 분리되는 이유**: 제목 영역은 시각적으로 독립된 블록이다. 독자가 문서 더미에서 훑어볼 때 제목만으로 내용을 판별할 수 있어야 한다.
-- **붙임이 맨 아래인 이유**: 본문의 흐름을 깨지 않으면서, 참조 자료의 존재를 명확히 알린다.
-
----
-
-## 2. 시각적 위계: □ ㅇ - * 체계
-
-이 기호 체계는 한국 정부 문서의 **가장 특징적인 관습**이다. 한국 독자라면 이 기호만 보고도 "공문서"임을 즉시 인식한다.
-
-### 기호 위계와 각 단계의 역할
-
-| 단계 | 기호 | 용도 | 들여쓰기 |
-|------|------|------|----------|
-| 1단계 | □ | **대주제** 선언. 새로운 논의 영역 시작 | 없음 |
-| 2단계 | ㅇ | **설명/전개**. 대주제를 풀어서 서술 | 약간 |
-| 3단계 | - | **세부 항목**. 구체적 사실, 수치 | 더 들여쓰기 |
-| 4단계 | * | **부가 정보**. 보충 설명, 예시 | 더 들여쓰기 |
-| 특수 | ※ | **주의/참고사항**. 맥락에서 벗어나는 보충 | 문맥에 따라 |
-| 특수 | ▷ | **보충 설명**. 부연이나 예시 도입 | 문맥에 따라 |
-
-### 실제 사용 예시
+A typical government document follows this flow:
 
 ```
-□ 2026년 소상공인 지원 대책 주요 내용
+Page 1 (Cover/Summary):
+  Title (26pt, centered, bold)
+  Spacer
+  Introductory paragraph (with full-width indent)
+  Spacer
+  Date + Authority (right-aligned)
+  Spacer
+  Note box (※ prerequisites or key notices)
+  Spacer
+  Summary table (key facts at a glance)
 
-  ㅇ 소상공인 대출 금리를 연 3.5%에서 2.0%로 인하한다.
-    - 대상: 연매출 3억 원 이하 소상공인
-    - 시행 시기: 2026년 4월 1일부터 적용
-      * 기존 대출자는 자동 전환되며 별도 신청 불요
-      * 신규 대출 한도는 업종별로 차등 적용
-
-  ㅇ 임대료 부담 경감을 위한 세제 지원을 확대한다.
-    - 임대인에게 임대료 인하분의 70%를 세액공제
-      * 종전 50%에서 상향
-
-  ※ 상세 업종별 기준은 붙임 1 참조
+Page 2+ (Sections):
+  Section Header (table: navy number + title)
+  Spacer
+  □ Major topic (bold keyword label)
+    ○ Sub-topic explanation
+      - Detail item
+      * Exception or footnote
+  Spacer
+  < Table Caption >
+  Data table
+  Spacer
+  Info box (numbered steps or criteria)
 ```
 
-### 왜 이 체계가 효과적인가
+## Decision Guide: Markdown → Design Pattern
 
-- **번호 매기기(1, 2, 3)를 피하는 이유**: 정부 문서는 수시로 항목이 추가/삭제된다. 번호 체계는 순서 재조정이 필요하지만 기호 체계는 그렇지 않다.
-- **기호가 시각적 깊이를 표현하는 이유**: □는 시각적으로 "크고 무거운" 느낌, ㅇ는 "중간", -는 "가벼운" 느낌을 준다. 기호의 시각적 무게 자체가 위계를 전달한다.
-- **한 문단에 여러 단계를 혼합하지 않는 원칙**: 각 기호는 독립된 행에서 시작한다. 이는 스캔 가독성을 극대화한다.
+Use this mapping to translate markdown elements into catalog patterns:
 
----
+| Markdown Element | Design Pattern | Key Style IDs |
+|-----------------|----------------|---------------|
+| `# Heading` | Section Header (1x2 table, new page) | bf14 + bf4, charPr 26 + 29 |
+| `## Heading` | □ Major Topic (NOT a section header) | charPr 34 (bold) + 9, paraPr 1 |
+| `**bold text**` | Bold Emphasis (keyword bold) | charPr 34 (bold) + 9 (normal) |
+| `- **keyword** text` | □ / ○ topic with bold label | charPr 9 + 34 + 9, paraPr 1 |
+| `- list item` | ○ sub-topic or - sub-item | paraPr 1, 14, 15 |
+| Indented `- item` | - sub-item (deeper indent) | paraPr 14 or 15 |
+| `> blockquote` | Note Box (※) | bf25 (gray dashed) |
+| Tables | Data Table or Comparison Table | bf22 (gray) or bf23 (blue) header |
+| `code block` | Info Box | bf26 (blue dashed) |
+| Paragraph text | Body Paragraph | charPr 9, paraPr 0 |
+| Date/signature | Right-Aligned Text | paraPr 29 |
 
-## 3. Bold 강조의 기술: 기자를 위한 마커
+## The Symbol Hierarchy: □ ○ - *
 
-Bold는 정부 보도자료에서 **가장 정교한 암묵지**다. 단순히 "중요한 단어를 굵게"가 아니라, "기자가 헤드라인에 넣어야 할 부분"을 표시하는 시스템이다. 상급자가 2분 만에 훑어볼 때 bold만 읽어도 정책의 뼈대가 파악되도록 설계한다.
+Korean government documents use a strict visual hierarchy instead of numbered lists:
 
-### 원칙 1: 동사 어미는 bold에서 제외한다
+- **□ (네모)** — Major topics. Always followed by a bold keyword in parentheses: `□ (사업목적) 설명 텍스트`
+- **○ (동그라미)** — Sub-topics under □. Same keyword+explanation format.
+- **- (대시)** — Details under ○. Plain text, deeper indent.
+- **\* (별표)** — Exceptions, footnotes, additional notes. Deepest indent.
 
-5개 문서에서 일관되게 관찰되는 가장 중요한 규칙이다.
+This hierarchy is NOT decorative — it's a standardized information architecture that Korean civil servants and journalists are trained to scan.
 
-```
-"고품질 세포주를 만들고 품질시험을 완료[BOLD끝]했다"       (질병관리청)
-"연구 초기 단계에서 필요한 비용과 시간을 줄일 수 있는 기반을 마련[BOLD끝]했다"
-"서울의 벚꽃이 3월 29일(일) 개화[BOLD끝]했다고 발표했다"   (수도권기상청)
-"온라인 스타트업 원스톱 지원센터를 3월 30일(월) 개소[BOLD끝]한다고 밝혔다" (중기부)
-```
+## Professional Polish: What Separates Amateur from Expert
 
-**왜**: "-했다", "-한다"까지 bold에 포함하면 시각적으로 문장이 "뚝" 끊기는 느낌이 된다. 어미를 일반체로 두면 bold에서 일반체로 자연스럽게 흘러가며, 독자의 눈이 핵심 내용(목적어+동사 어간)에 머문다.
+These subtle techniques are what make a document look professionally crafted:
 
-### 원칙 2: "숫자 + 성과"를 묶어서 강조한다
+### Full-width space indent
+Every body paragraph starts with two ideographic spaces (U+3000 `　`). This creates a visual indent without relying on paragraph-level indentation. Do NOT apply to: table cells, titles, captions, or note box content.
 
-숫자 단독으로는 강조하지 않는다. 숫자가 무엇을 의미하는지까지 하나의 bold 구간에 넣는다.
+### Micro-spacing (9pt spacers)
+Between sections, use a spacer paragraph with charPr 1 (9pt) containing a single space. This creates ~60% of a full line's height — enough breathing room without wasting space. Never use a full-size (14pt) empty paragraph as a spacer.
 
-```
-"약 7,600여 건"이 아니라 → "약 7,600여 건의 애로 사항이 접수"          (중기부)
-"93%"가 아니라          → "93%를 상담 당일 즉시 해결"                  (중기부)
-"서울의 벚꽃이 3월 29일(일) 개화"  -- 날짜+사건을 하나의 bold 블록으로  (기상청)
-```
+### Bold keyword technique
+In body text, bold only the key noun phrase, not the entire sentence. Critically, verb endings (-했다, -됩니다, -을 추진) must stay in normal weight. This creates a "journalist's highlight" effect.
 
-단, 비교 수치가 나열되는 문장("작년보다 6일 빠르고, 평년보다 10일 빠르다")은 전체를 일반체로 둔다. 숫자가 많아 bold까지 걸면 시각적 과부하가 된다.
+**Example (split into runs):**
+- Run 1 (charPr 9, normal): `　　정부는 `
+- Run 2 (charPr 34, bold): `창업 생태계 혁신 방안`
+- Run 3 (charPr 9, normal): `을 발표하였다.`
 
-### 원칙 3: 부처마다 강도가 다르다
+### Parenthetical reduction
+Names, titles, and supplementary info in parentheses use a smaller font (charPr 5, 11pt) than the body text (charPr 9, 14pt). This prevents parenthetical info from visually competing with the main content.
 
-| 기관 | Bold 강도 | 특징 |
-|------|-----------|------|
-| 질병관리청 | 절제적 (본문 3-4곳) | 핵심 성과 동사구만 bold |
-| 과기정통부 | 중간 (정책명+결론부) | 기관명, 전략명, 행동 결론 |
-| 중기부 | 적극적 (30-40%) | 명사구/핵심 서술 bold, 조사/어미만 일반체 |
-| 수도권기상청 | 선택적 (사실+날짜만) | 핵심 사실(날짜+사건) 묶음만 |
-| 기후에너지환경부 | 본문 없음, 붙임만 | 보도자료 본문은 bold 미사용 |
+### Font hierarchy
+- **Serif fonts** (함초롬바탕, 휴먼명조) → body text, emphasis
+- **Sans-serif fonts** (돋움체, 맑은 고딕) → tables, captions, metadata, notes
 
-**실무 지침**: 성과/실적 강조가 필요한 문서는 중기부 스타일(적극적), 과학/전문 분야는 질병관리청 스타일(절제적)이 적절하다.
+Never use sans-serif for body paragraphs or serif for table cells.
 
-### XML 구현
+## Table Design
 
-한 문장을 여러 `<hp:run>`으로 나눠 bold charPr과 normal charPr을 교대 배치한다.
+### Header rows need backgrounds
+Every table header row must have a colored background. Without it, headers are indistinguishable from data rows.
+- **Gray (bf22)** — Default for most data tables
+- **Blue (bf23)** — For comparison, process, or highlight tables
+- **Gray+double bottom (bf24)** — For separator-style headers
 
-```xml
-<hp:run charPrIDRef="102"><hp:t>고품질 세포주를 만들고 품질시험을 완료</hp:t></hp:run>
-<hp:run charPrIDRef="101"><hp:t>했다.</hp:t></hp:run>
-```
+### Section headers are tables
+Major section dividers (corresponding to `# Heading` in markdown) are 1x2 tables:
+- Left cell: Navy background (bf14), white number (charPr 26), centered
+- Right cell: Standard border (bf4), bold title (charPr 29)
+- The paragraph containing this table has `pageBreak="1"` to start a new page
 
-charPr 102는 bold 속성 포함, charPr 101은 동일 서체/크기의 일반체. 핵심은 이 두 charPr만 교대하면 된다는 것이다.
+### Box patterns
+- **Note box (bf25)**: Solid gray border + very light gray fill. For ※ warnings, prerequisites.
+- **Info box (bf26)**: Dashed blue border + light blue fill. For guides, step lists, criteria.
+- Both are 1x1 tables with full content width (48000 HWPUNIT).
 
----
+### Content wrapper box
+The original government documents wrap related content blocks inside a 1x1 table with bf4 (thin solid border, no fill). This creates visual grouping — e.g., on page 1, the track comparison introduction + summary table are wrapped together in one bordered box.
 
-## 4. 타이포그래피: 서체 위계와 미세 조정
+Use this pattern when:
+- Page 1 has an introductory explanation followed by a summary table
+- Code blocks in the markdown contain both text and a table
+- Multiple related items should appear as a cohesive visual unit
 
-정부 문서의 타이포그래피는 **"장식 최소화, 정보 최대화"** 원칙을 따른다.
+### Table cell height
+Use `height="1200"` (not 800) for table cell heights. This provides comfortable padding that matches real government documents. Cells auto-expand if content is longer, but the minimum height prevents cramped-looking tables.
 
-### 서체 위계: 명조는 읽고, 고딕은 본다
+## What NOT to Do
 
-5개 문서 모두에서 동일한 원칙이 관찰된다. 이 위계를 깨면 문서가 어색해진다.
-
-| 역할 | 서체 | 왜 |
-|------|------|-----|
-| **읽는 본문** | 바탕, 함초롬바탕 (명조 계열) | 긴 텍스트의 가독성. 세리프가 시선을 다음 글자로 자연스럽게 안내한다 |
-| **보는 데이터/라벨** | 돋움체, 맑은 고딕, 한양중고딕 (고딕 계열) | 표, 주석, 메타정보 등 짧게 읽는 영역. 산세리프의 깔끔한 형태가 데이터 인지에 유리하다 |
-| **제목 전용** | HY헤드라인M, 함초롬돋움 | 큰 크기에서 강한 시각적 존재감. 본문에 절대 사용하지 않는다 |
-
-### 크기 단계
-
-```
-26pt  함초롬돋움 bold    — 주제목 (시각적 정점)
-16pt  HY헤드라인M       — 부제목, 붙임 헤더 (구조 라벨)
-14pt  바탕              — 본문 기본 (주 읽기 영역)
-12pt  바탕/맑은 고딕     — 괄호 보충, 각주 (부속 정보)
-10pt  돋움체             — 담당부서 표 (메타 정보)
-```
-
-**인접 단계 사이 최소 2pt 차이**가 필수다. 1pt 차이는 눈에 보이지 않고, 3pt 이상은 위계가 아니라 "다른 문서" 느낌이 된다.
-
-### 괄호 부가정보의 크기 축소
-
-기관명 뒤의 직함처럼 **괄호 안 부속 정보**는 본문(14pt)보다 2pt 작은 12pt로 처리한다.
-
-```
-질병관리청[14pt](청장 임승관)[12pt] 국립보건연구원[14pt](원장 남재환)[12pt]
-```
-
-같은 `<hp:run>` 안에 넣는 것이 아니라, 별도 run으로 분리하여 크기만 변경한다. 이는 "직함은 기관의 부속 정보"라는 행정 문서의 철학을 반영한다. 같은 크기로 쓰면 "청장 임승관"이 기관명과 동급으로 읽히는데, 2pt 차이만으로 위계가 성립한다.
-
-### 자간(spacing) 미세 조정
-
-양쪽 정렬(justify)에서 줄 끝이 깔끔하게 맞지 않을 때, **run 단위로** 자간을 -1 ~ -18까지 조정한다.
-
-```
-spacing=-6   핵심 사실 문장 (한 줄에 맞추기 위한 압축)    — 기상청 문서
-spacing=-14  긴 bold 구절 (줄넘김 방지)                  — 과기정통부 문서
-spacing=-17  극단적 압축 ("발표했다." 부분)                — 기상청 문서
-```
-
-이것은 인쇄 기반 사고의 흔적이다. 경험 있는 공무원이 출력 후 눈으로 확인하며 "이 문장이 저 줄에서 한 글자만 넘어가면 안 된다"고 판단하고 수동으로 조절한 결과, charPr이 30개 이상으로 분화된다.
-
-**AI 생성 시 실용 지침**: 본문 기본 자간은 0, 줄이 넘치는 긴 줄에서만 spacing=-3~-5를 적용한다. -10 이하의 극단적 조정은 피한다.
-
-### 색상은 거의 사용하지 않는다
-
-- **본문**: 검정(#000000)만 사용. 색상의 부재 자체가 공식성의 신호다.
-- **파란색(#0000FF)**: 하이퍼링크 또는 특수 마커에만.
-- **빨간색(#FF0000)**: 정정사항, 현재 연도 데이터 강조.
-- **흰색(#FFFFFF)**: 어두운 배경의 표 헤더 위 텍스트.
-
----
-
-## 5. 들여쓰기와 여백: 보이지 않는 질서
-
-### 전각 공백 2개 들여쓰기
-
-5개 문서 모두 동일한 방식이다. paraPr의 indent 값은 0이고, 텍스트 시작에 **전각 공백 2개**(`\u3000\u3000`)를 삽입한다.
-
-```
-[일반 본문]   ᅟᅟ질병관리청(청장 임승관) 국립보건연구원은...
-[일반 본문]   ᅟᅟ중소벤처기업부(장관 한성숙, 이하 중기부)는...
-[인용문]     ᅟᅟᅟ"한계를 해소하고 인공혈액을 포함한..."
-[* 주석]     ᅟᅟ* 역분화줄기세포: 일반 세포를 되돌려 만든...
-```
-
-**인용문은 공백 3개**로 추가 들여쓰기한다. 이는 "이 단락은 다른 사람의 말"이라는 시각적 구분이다. 독자가 빠르게 스캔할 때 인용문을 식별할 수 있다.
-
-**\* 주석의 내어쓰기**: intent에 음수값(예: -1273)을 주어 \* 기호를 본문 왼쪽 마진보다 바깥으로 돌출시킨다. \* 기호가 눈에 띄어 "이것은 부연 설명"임을 알린다.
-
-### 소형 빈 줄의 마법
-
-빈 줄을 본문 크기(14pt)로 넣으면 한 줄 높이 전체가 비어 "아마추어" 느낌이 된다. 경험 많은 공무원은 **빈 줄의 서체 크기를 절반 이하로 줄여** 반줄 여백을 만든다.
-
-| 문서 | 빈 줄 크기 | 본문 크기 | 비율 |
-|------|-----------|----------|------|
-| 질병관리청 | 7pt | 14pt | 50% |
-| 과기정통부 | 8pt | 14pt | 57% |
-| 기후에너지환경부 | 3pt, 5pt | 14pt | 21%, 36% |
-
-기후에너지환경부 문서는 3단계 빈 줄을 전략적으로 사용한다:
-- **3pt**: 본문과 주석 사이 (최소 간격 -- "이 주석은 바로 위 문장의 부연")
-- **5pt**: 붙임의 불릿 항목과 주석 사이 (중간 간격)
-- **기본(14pt)**: 문단 간 일반 간격 (새로운 화제 시작)
-
-**왜 margin 대신 빈 줄을 쓰는가**: 한컴 문서에서 paraPr의 prev/next margin은 표와 인접할 때 예측 불가능한 동작을 한다. 소형 빈 줄은 어떤 상황에서도 일관된 여백을 보장하는 가장 안전한 방법이다.
-
-### 페이지 기본 설정
-
-| 항목 | 값 | 이유 |
-|------|-----|------|
-| 용지 | A4 | 한국 표준 |
-| 좌우 여백 | 20mm | 인쇄 시 바인딩 공간 확보 + 시선의 여유 |
-| 상하 여백 | 15mm | 정보 밀도와 여백의 균형 |
-| 줄 간격 | 160% | 한글의 네모꼴 특성상 라틴 문자보다 넓은 줄 간격 필요 |
-| 본문 정렬 | 양쪽 정렬 | 좌우 끝이 정돈되어 공식적 인상 부여 |
-| 제목 정렬 | 가운데 정렬 | 시각적 무게중심을 페이지 중앙에 배치 |
-
-줄 간격 160%는 사실상 **정부 문서의 표준**이다. 한글은 글자 높이가 라틴 알파벳보다 크고 균일하기 때문에, 120-130% 줄 간격(영문 기준 일반적)으로는 답답해 보인다. 일부 문서(과기정통부)는 1페이지 137%, 2페이지 152% 등 밀도와 가독성의 절충을 위해 페이지별로 조정하기도 한다.
-
----
-
-## 6. 표(Table) 활용: 구조화된 정보 전달
-
-정부 문서에서 표는 장식이 아니라 **정보 압축 도구**다.
-
-### 표가 사용되는 상황
-
-1. **데이터 비교**: 전년 vs 올해, 방안 A vs 방안 B
-2. **조직/연락처 정보**: 담당부서, 담당자, 전화번호
-3. **시간순 정보**: 추진 일정, 단계별 계획
-4. **메타 정보**: 문서 헤더의 보도시점, 배포일자
-5. **레이아웃 도구**: 사진 2장 나란히 배치, 개요 박스 등 (테두리 없는 숨은 표)
-
-### 표 디자인 원칙
-
-- **헤더 배경**: 연회색(#D9D9D9) 또는 연파랑(#DFE6F7, #E0F4F6). 진한 색은 시선을 과도하게 끌어 본문과의 균형을 깨뜨린다.
-- **헤더-본문 구분**: 이중선(DOUBLE_SLIM 0.7mm) 또는 굵은 실선으로 헤더와 데이터를 분리.
-- **테두리**: 기본 0.12mm 실선. 데이터 행 간은 약한 분리(0.15mm).
-- **헤더 텍스트**: 가운데 정렬, 굵게, 맑은 고딕 또는 돋움체.
-- **데이터 텍스트**: 텍스트는 왼쪽 정렬, 숫자는 오른쪽 정렬.
-- **글자 크기**: 본문보다 1-2pt 작게 (10-12pt).
-
-### 제목 박스의 연결 테두리 기법
-
-5개 문서 모두 동일한 기법으로 제목 영역을 구성한다. 2행 1열 표에서:
-
-```
-행 1 (제목):   좌+우+상 실선, 하단 없음 (borderFill A)
-행 2 (부제목): 좌+우+하 실선, 상단 없음 (borderFill B)
-```
-
-결과: 외곽은 완전한 사각형이지만 **중간 구분선이 없다**. 제목과 부제목이 하나의 영역으로 읽힌다. 만약 각 행이 독립된 사각형이면 제목과 부제목 사이에 이중선이 생겨 시각적으로 끊어진다.
-
-이 기법은 헤더 표(로고|보도자료|빈 셀)에도 동일하게 적용된다. 각 셀이 다른 borderFill을 사용하여 외곽만 표시하고 셀 간 내부 구분선은 보이지 않게 한다.
-
-### 붙임/참고 헤더 표준 디자인
-
-5개 문서에서 반복되는 붙임(별첨) 헤더 패턴:
-
-```
-┌──────────┬──┬────────────────────────────┐
-│ 붙임 N   │  │ 제목                        │
-│(진남색배경)│  │                             │
-│(흰색 글씨)│  │                             │
-└──────────┴──┴────────────────────────────┘
-     ↑         ↑          ↑
-   7200 HU   구분선     나머지 전체
-   #000066   (좌우 실선만,  HY헤드라인M 15-16pt
-   HY헤드라인M  상하 없음)    검정 글씨
-   15-16pt 흰색
-```
-
-3열 표로 구현한다:
-- **1열**: 진남색(#000066 또는 #000080) 배경 + 흰색(#FFFFFF) HY헤드라인M. 질병관리청은 #0066FF(밝은 파랑), 기상청은 #00468C(기관 CI 컬러)를 사용하기도 한다.
-- **2열**: 아주 좁은 빈 셀(500-1700 HU). 좌우 실선만 있고 상하 없음 -- 시각적 세로 구분선 역할.
-- **3열**: 제목 텍스트. HY헤드라인M 15-16pt 검정.
-
----
-
-## 6.5. 표의 확장 활용: 레이아웃 요소로서의 표
-
-표는 데이터뿐 아니라 **시각 레이아웃의 핵심 도구**다. 정부 문서에서 텍스트만으로는 표현이 어려운 시각 구조를 표로 구현한다.
-
-### 번호 섹션 헤더 (공고/보고서 필수 요소)
-
-마크다운의 `# 1 사업 개요`, `# 2 신청자격` 같은 번호 헤딩은 단순 텍스트가 아니라 **2행 1열(또는 2행 4열) 표**로 구현한다. 이것이 실제 정부 문서에서 가장 눈에 띄는 시각 요소다.
-
-```
-┌────┬────────────────────────────────────┐
-│ 1  │  사업 개요                           │
-│    │                                    │
-└────┴────────────────────────────────────┘
- ↑ 번호 셀                ↑ 제목 셀
- bf14(남색)+흰색텍스트       bf4(일반 테두리)+charPr29
- 또는 bf23(연파랑)+검정텍스트  HY헤드라인M bold
- 너비: 3000~4000 HU         나머지 전체
-```
-
-가장 단순한 구현 — 2행 2열 표:
-- **행 1, 열 1**: 번호 (borderFill 14 남색, charPr 26 흰색 17pt HY헤드라인M, paraPr 22 가운데)
-- **행 1, 열 2**: 제목 텍스트 (borderFill 4, charPr 29 15pt HY헤드라인M BOLD, paraPr 33 가운데 또는 34 왼쪽)
-- **행 2**: 아래쪽 여백 행 (높이를 낮게 잡고 투명 borderFill 1)
-
-또는 더 간단하게 — 1행 2열 표로도 충분하다:
-- **열 1**: 번호 셀 (너비 3500 HU) + bf14 + charPr 26
-- **열 2**: 제목 셀 (너비 38500 HU) + bf4 + charPr 29
-
-이 패턴은 마크다운의 `# N 제목` 형식을 만날 때마다 적용한다. `## 소제목`은 표가 아니라 기존 □ 스타일로 처리한다.
-
-### ※ 주의사항/참고 박스
-
-마크다운의 blockquote나 ※ 텍스트는 1행 1열 표로 감싸면 시각적으로 돋보인다.
-
-```
-┌┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┐
-┊ ※ 모두의 창업 프로젝트 참여신청은 모두의 창업   ┊
-┊   플랫폼(www.modoo.or.kr)에서 진행됩니다.    ┊
-┊ ※ 홈페이지 회원가입 후 도전신청서를 작성...    ┊
-└┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┘
-```
-
-- borderFill **25**(옅은회색+점선) 또는 **26**(옅은파랑+점선) 사용
-- 박스 안 텍스트는 charPr 1(9pt) 또는 0(10pt)
-
-### < 캡션 > 스타일
-
-표 바로 위에 오는 설명 텍스트. 본문보다 작고 가운데 정렬:
-
-```
-         < 지역기반 아이디어 선정규모(안) >
-┌──────┬─────────┬─────────┐
-│ 구분  │  수도권    │  비수도권   │
-```
-
-- charPr 51(12pt 맑은고딕 BOLD) + paraPr 19(CENTER)
-- 꺾쇠 `< >`로 감싸는 것이 정부 문서 관행
-
-### 표 헤더에 배경색 넣기
-
-실제 정부 문서의 표는 거의 예외 없이 헤더 행에 배경색을 넣는다. 배경이 없는 표 헤더는 데이터 행과 시각적으로 구분되지 않아 아마추어 인상을 준다.
-
-```
-┌──────┬───────────┬───────────┐  ← 헤더: borderFill 22(연회색)
-│ 구분  │ 일반트랙     │ 로컬트랙    │     charPr 136(돋움체 BOLD)
-├──────┼───────────┼───────────┤
-│ 모집  │ 4,000명    │ 1,000명    │  ← 본문: borderFill 4(배경 없음)
-│ 규모  │           │           │     charPr 0(함초롬돋움)
-```
-
-사용 가능한 헤더 배경:
-- **bf22** (#F2F2F2 연회색): 가장 범용적. 대부분의 표에 적합
-- **bf23** (#DFE6F7 연파랑): 프로세스/플로차트 표, 강조가 필요한 표
-- **bf24** (#E5E5E5 중회색 + 이중선): 복잡한 표의 최상위 헤더
-
----
-
-## 7. 전체적인 인상: 정부 문서다움
-
-### 정보 밀도의 원칙
-
-정부 보도자료는 **본문 1-2페이지 이내**를 강하게 지향한다. 나머지는 모두 "붙임"으로 분리한다. "많은 내용을 적은 공간에, 그러나 읽기 쉽게"가 설계 철학이다.
-
-이를 가능하게 하는 장치들:
-- 기호 위계로 들여쓰기만으로 구조를 표현 (별도 소제목 불필요)
-- 표로 비교/나열 정보를 압축
-- 소형 빈 줄(3-8pt)로 시각적 호흡을 확보하면서도 공간 낭비를 방지
-- 자간 미세 조정으로 한 줄이 넘치는 것을 방지
-
-### 시각적 리듬
-
-잘 만든 정부 문서를 멀리서 바라보면 다음과 같은 리듬이 보인다:
-
-```
-[헤더 표] ───── 정형화된 블록
-                    ↓
-[큰 제목] ───── 시각적 정점
-                    ↓
-[짧은 도입] ───── 1-2문장 맥락 제공
-                    ↓
-[□ ㅇ - * 구조] ── 본문의 핵심 (가장 긴 영역)
-                    ↓
-[표] ──────── 데이터 요약
-                    ↓
-[인용문] ────── 관계자 발언 (선택적)
-                    ↓
-[붙임/연락처] ──── 마무리
-```
-
-이 리듬이 깨지면 -- 예를 들어 표 없이 텍스트만 이어지거나, 기호 위계 없이 긴 문단이 나열되면 -- 독자는 "정부 문서답지 않다"고 느낀다.
-
-### 요약: 정부 문서 디자인의 핵심 가치
-
-| 가치 | 구현 방식 |
-|------|----------|
-| **공식성** | 색상 절제, 양쪽 정렬, 구조화된 헤더 표, 명조+고딕 서체 위계 |
-| **효율성** | □ㅇ-* 위계, 표 활용, 본문 2페이지 이내, 소형 빈 줄 |
-| **가독성** | 160% 줄 간격, Bold로 기자용 핵심 마킹, 12pt 괄호 부가정보, 자간 미세 조정 |
-| **일관성** | 전각 공백 2개 들여쓰기, 제목 연결 테두리 기법, 붙임 헤더 진남색 패턴 |
-
-이 가치들이 균형을 이룰 때 "정부 문서다운" 인상이 완성된다.
+- Don't use paraPr 2-8 for body text (they trigger auto-numbering outlines)
+- Don't put black text on navy backgrounds (use white charPr: 8, 26, or 55)
+- Don't use 14pt empty lines as spacers (use 9pt charPr 1)
+- Don't mix serif and sans-serif within the same text role
+- Don't skip the spacer between elements — the document needs breathing room
+- Don't generate header.xml from scratch — always use the base template
