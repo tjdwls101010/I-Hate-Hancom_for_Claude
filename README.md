@@ -72,63 +72,68 @@
 
 ---
 
-## Example Output
+## Installation
 
-아래는 2025년 12월 23일 배포된 [2026년 해양수산부 업무보고](https://www.mof.go.kr/2026briefing/main/2026_bodo.pdf) 원본을 마크다운으로 역구성(reverse-making)한 뒤, 이 스킬로 HWPX를 생성한 결과물이다 ([`Docs/Examples/example3/example3.hwpx`](Docs/Examples/example3/example3.hwpx)).
+<!-- TODO: 설치 가이드 이미지/동영상 추가 예정 -->
 
-이 스킬은 2026년 3월 30일부터 4월 1일까지 약 8시간을 투자해 만든 v1이다. 정부 원본 문서와 비교하면 디자인 완성도에 분명한 차이가 있다 — 다단 레이아웃, 복잡한 병합 표, 세밀한 여백 조정 등은 아직 지원하지 않는다. 그러나 공식 스펙 없이 리버스 엔지니어링만으로 8시간 만에 도달한 결과물로서, 초안(draft) 수준에서는 충분히 실용적이다. 수작업 서식 없이 구조화된 공문서 골격을 빠르게 만들어낸다는 점에 현재 버전의 가치가 있다.
+### Prerequisites
 
-한컴오피스에서 열었을 때의 실제 렌더링:
+- [Claude Code](https://claude.ai/code) (CLI, Desktop App, 또는 IDE Extension)
+- Python 3.8+ (외부 패키지 불필요 — stdlib만 사용)
 
-### 일반현황 — 조직도, 인원 표
+### Quick Start
 
-섹션 헤더(초록 바), `▢` 제목, `▷` 불렛, 조직도 박스(노란 배경), 인원 현황 표가 보인다.
+**1. 레포 클론**
 
-<img src="Docs/images/preview_01_overview.png" width="600" alt="일반현황: 기구 및 조직 현황, 인원 현황 표" />
+```bash
+git clone https://github.com/tjdwls101010/I-Hate-Hancom_for_Claude.git
+```
 
-### 예산 현황 — 데이터 표, 공공기관 목록
+**2. Claude Code 플러그인 설치**
 
-예산 비교 표(연도별 증감), 산하 공공기관 기능·역할 표.
+```
+/plugin marketplace add https://github.com/seongjin/I-Hate-Hancom_for_Claude.git
+/plugin install I-Hate-Hancom_for_Claude
+```
 
-<img src="Docs/images/preview_02_budget.png" width="600" alt="예산 현황 표, 산하 공공기관 현황" />
+**3. 사용 시작**
 
-### 주요 성과 — 제목 계층 구조
+```
+"이 마크다운을 한컴 문서로 만들어줘"
+```
 
-`▢`→`○`→`▷` 3단계 계층 구조. `○` 수준의 파란 밑줄 제목, **볼드 키워드** 강조.
+스킬이 자동으로 트리거된다 — "한컴", "hwpx", "보도자료 작성" 같은 키워드를 인식한다.
 
-<img src="Docs/images/preview_03_achievements.png" width="600" alt="25년 주요 성과: ▢/○/▷ 계층 구조" />
+---
 
-### 보완점 — 파란 음영 제목
+## Usage
 
-`▢` 보완점 섹션, `○` 수준의 하늘색 음영 + 밑줄 제목.
+<!-- TODO: 사용법 가이드 이미지/동영상 추가 예정 -->
 
-<img src="Docs/images/preview_04_issues.png" width="600" alt="보완점 섹션" />
+Claude Code에서 자연어로 요청하면 된다:
 
-### 향후 추진방향 — 정책 비전 표
+```
+"이 마크다운 파일을 한컴 공문서로 변환해줘"
+"hwpx로 만들어줘"
+"보도자료 형식으로 작성해줘"
+"이 hwpx 파일 읽어줘"
+```
 
-정책 비전·목표 표, 중점 추진과제 및 세부 과제 표.
+### 직접 스크립트 실행
 
-<img src="Docs/images/preview_05_roadmap.png" width="600" alt="향후 업무추진방향, 추진과제 표" />
+```bash
+# 1. 마크다운 린트
+python3 .claude/skills/Hancom/Scripts/md_lint.py input.md
 
-### 국정과제 상세 — 타이틀 박스, 인용 박스, 운항 일정 표
+# 2. 변환 + 빌드
+python3 .claude/skills/Hancom/Scripts/md_to_hwpx.py input.md --output output.hwpx --build --title "문서 제목"
 
-타이틀 박스(회색 테두리), 대통령 말씀 인용 박스(노란 배경), 월별 운항 일정 표, `▷` 상세 불렛.
+# 3. HWPX 읽기
+python3 .claude/skills/Hancom/Scripts/read_hwpx.py document.hwpx
 
-<img src="Docs/images/preview_06_arctic.png" width="600" alt="북극항로 국정과제: 타이틀 박스, 인용 박스, 표" />
-
-### 수산업 혁신 — 인용 박스, 노트 박스
-
-정책 섹션 타이틀 박스, 대통령 말씀 인용, `▷` 불렛 + **볼드 키워드**, 실증 사례 노트 박스.
-
-<img src="Docs/images/preview_07_fishery.png" width="600" alt="전통 수산업 혁신: 인용 박스, 노트 박스" />
-
-### 수출 확대 — 성공 사례 박스
-
-`▷` 데이터 불렛, `▢` 제목 + `○` 하위 제목, 대통령 말씀 인용 박스, 김 수출 성공사례 노트 박스.
-
-<img src="Docs/images/preview_08_export.png" width="600" alt="수산식품 수출 확대: 성공사례 박스" />
-
-> 전체 예시 소스 파일은 [`Docs/Examples/`](Docs/Examples/)에서 확인할 수 있다 (마크다운 원본 + 변환된 HWPX).
+# 4. HWPX 검증
+python3 .claude/skills/Hancom/Scripts/validate_hwpx.py document.hwpx
+```
 
 ---
 
@@ -189,68 +194,63 @@ document.hwpx (ZIP)
 
 ---
 
-## Installation
+## Example Output
 
-<!-- TODO: 설치 가이드 이미지/동영상 추가 예정 -->
+아래는 2025년 12월 23일 배포된 [2026년 해양수산부 업무보고](https://www.mof.go.kr/2026briefing/main/2026_bodo.pdf) 원본을 마크다운으로 역구성(reverse-making)한 뒤, 이 스킬로 HWPX를 생성한 결과물이다 ([`Docs/Examples/example3/example3.hwpx`](Docs/Examples/example3/example3.hwpx)).
 
-### Prerequisites
+이 스킬은 2026년 3월 30일부터 4월 1일까지 약 8시간을 투자해 만든 v1이다. 정부 원본 문서와 비교하면 디자인 완성도에 분명한 차이가 있다 — 다단 레이아웃, 복잡한 병합 표, 세밀한 여백 조정 등은 아직 지원하지 않는다. 그러나 공식 스펙 없이 리버스 엔지니어링만으로 8시간 만에 도달한 결과물로서, 초안(draft) 수준에서는 충분히 실용적이다. 수작업 서식 없이 구조화된 공문서 골격을 빠르게 만들어낸다는 점에 현재 버전의 가치가 있다.
 
-- [Claude Code](https://claude.ai/code) (CLI, Desktop App, 또는 IDE Extension)
-- Python 3.8+ (외부 패키지 불필요 — stdlib만 사용)
+한컴오피스에서 열었을 때의 실제 렌더링:
 
-### Quick Start
+### 일반현황 — 조직도, 인원 표
 
-**1. 레포 클론**
+섹션 헤더(초록 바), `▢` 제목, `▷` 불렛, 조직도 박스(노란 배경), 인원 현황 표가 보인다.
 
-```bash
-git clone https://github.com/seongjin/I-Hate-Hancom.git
-```
+<img src="Docs/images/preview_01_overview.png" width="600" alt="일반현황: 기구 및 조직 현황, 인원 현황 표" />
 
-**2. Claude Code 플러그인 설치**
+### 예산 현황 — 데이터 표, 공공기관 목록
 
-```
-/plugin marketplace add https://github.com/seongjin/I-Hate-Hancom.git
-/plugin install I-Hate-Hancom
-```
+예산 비교 표(연도별 증감), 산하 공공기관 기능·역할 표.
 
-**3. 사용 시작**
+<img src="Docs/images/preview_02_budget.png" width="600" alt="예산 현황 표, 산하 공공기관 현황" />
 
-```
-"이 마크다운을 한컴 문서로 만들어줘"
-```
+### 주요 성과 — 제목 계층 구조
 
-스킬이 자동으로 트리거된다 — "한컴", "hwpx", "보도자료 작성" 같은 키워드를 인식한다.
+`▢`→`○`→`▷` 3단계 계층 구조. `○` 수준의 파란 밑줄 제목, **볼드 키워드** 강조.
 
----
+<img src="Docs/images/preview_03_achievements.png" width="600" alt="25년 주요 성과: ▢/○/▷ 계층 구조" />
 
-## Usage
+### 보완점 — 파란 음영 제목
 
-<!-- TODO: 사용법 가이드 이미지/동영상 추가 예정 -->
+`▢` 보완점 섹션, `○` 수준의 하늘색 음영 + 밑줄 제목.
 
-Claude Code에서 자연어로 요청하면 된다:
+<img src="Docs/images/preview_04_issues.png" width="600" alt="보완점 섹션" />
 
-```
-"이 마크다운 파일을 한컴 공문서로 변환해줘"
-"hwpx로 만들어줘"
-"보도자료 형식으로 작성해줘"
-"이 hwpx 파일 읽어줘"
-```
+### 향후 추진방향 — 정책 비전 표
 
-### 직접 스크립트 실행
+정책 비전·목표 표, 중점 추진과제 및 세부 과제 표.
 
-```bash
-# 1. 마크다운 린트
-python3 .claude/skills/Hancom/Scripts/md_lint.py input.md
+<img src="Docs/images/preview_05_roadmap.png" width="600" alt="향후 업무추진방향, 추진과제 표" />
 
-# 2. 변환 + 빌드
-python3 .claude/skills/Hancom/Scripts/md_to_hwpx.py input.md --output output.hwpx --build --title "문서 제목"
+### 국정과제 상세 — 타이틀 박스, 인용 박스, 운항 일정 표
 
-# 3. HWPX 읽기
-python3 .claude/skills/Hancom/Scripts/read_hwpx.py document.hwpx
+타이틀 박스(회색 테두리), 대통령 말씀 인용 박스(노란 배경), 월별 운항 일정 표, `▷` 상세 불렛.
 
-# 4. HWPX 검증
-python3 .claude/skills/Hancom/Scripts/validate_hwpx.py document.hwpx
-```
+<img src="Docs/images/preview_06_arctic.png" width="600" alt="북극항로 국정과제: 타이틀 박스, 인용 박스, 표" />
+
+### 수산업 혁신 — 인용 박스, 노트 박스
+
+정책 섹션 타이틀 박스, 대통령 말씀 인용, `▷` 불렛 + **볼드 키워드**, 실증 사례 노트 박스.
+
+<img src="Docs/images/preview_07_fishery.png" width="600" alt="전통 수산업 혁신: 인용 박스, 노트 박스" />
+
+### 수출 확대 — 성공 사례 박스
+
+`▷` 데이터 불렛, `▢` 제목 + `○` 하위 제목, 대통령 말씀 인용 박스, 김 수출 성공사례 노트 박스.
+
+<img src="Docs/images/preview_08_export.png" width="600" alt="수산식품 수출 확대: 성공사례 박스" />
+
+> 전체 예시 소스 파일은 [`Docs/Examples/`](Docs/Examples/)에서 확인할 수 있다 (마크다운 원본 + 변환된 HWPX).
 
 ---
 
@@ -304,7 +304,7 @@ I-Hate-Hancom/
 >
 > "hwp로 보내주세요"라는 말이 역사 속으로 사라지는 그날까지,
 >
-> 우리는 `#`과 `-`와 `|`로 저항한다.
+> 우리는 `#`과 `-`와 `>`로 저항한다.
 
 그날이 올 때까지, 이 스킬이 당신의 시간을 조금이나마 돌려주길 바란다.
 
