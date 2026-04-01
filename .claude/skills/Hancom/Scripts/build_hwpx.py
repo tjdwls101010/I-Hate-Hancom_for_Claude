@@ -112,7 +112,7 @@ def generate_content_hpf(template_path: str,
         ext = os.path.splitext(img)[1].lower()
         media = IMAGE_MEDIA_TYPES.get(ext, "application/octet-stream")
         manifest_items.append(
-            f'    <opf:item id="{img_id}" href="BinData/{img}" media-type="{media}"/>'
+            f'    <opf:item id="{img_id}" href="BinData/{img}" media-type="{media}" isEmbeded="1"/>'
         )
 
     manifest_block = "  <opf:manifest>\n" + "\n".join(manifest_items) + "\n  </opf:manifest>"

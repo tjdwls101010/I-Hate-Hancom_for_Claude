@@ -250,6 +250,45 @@ def emit_caption(text):
     return p(PARA['center'], CHAR['caption'], f'< {text} >')
 
 
+def emit_image(image_id):
+    """Emit an image placeholder with <hp:pic> element matching Hancom's expected format."""
+    w = FULL_WIDTH
+    h = 30000  # default height, user adjusts in Hancom
+    c = CHAR['small']
+    return f"""\
+<hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">\
+<hp:run charPrIDRef="{c}">\
+<hp:pic id="0" zOrder="0" numberingType="PICTURE" textWrap="TOP_AND_BOTTOM" \
+textFlow="BOTH_SIDES" lock="0" dropcapstyle="None" href="" groupLevel="0" instid="0" reverse="0">\
+<hp:offset x="0" y="0"/>\
+<hp:orgSz width="{w}" height="{h}"/>\
+<hp:curSz width="{w}" height="{h}"/>\
+<hp:flip horizontal="0" vertical="0"/>\
+<hp:rotationInfo angle="0" centerX="0" centerY="0" rotateimage="1"/>\
+<hp:renderingInfo>\
+<hc:transMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>\
+<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>\
+<hc:rotMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>\
+</hp:renderingInfo>\
+<hp:imgRect>\
+<hc:pt0 x="0" y="0"/><hc:pt1 x="{w}" y="0"/>\
+<hc:pt2 x="{w}" y="{h}"/><hc:pt3 x="0" y="{h}"/>\
+</hp:imgRect>\
+<hp:imgClip left="0" right="0" top="0" bottom="0"/>\
+<hp:inMargin left="0" right="0" top="0" bottom="0"/>\
+<hp:imgDim dimwidth="{w}" dimheight="{h}"/>\
+<hc:img binaryItemIDRef="{image_id}" bright="0" contrast="0" effect="REAL_PIC" alpha="0"/>\
+<hp:effects/>\
+<hp:sz width="{w}" widthRelTo="ABSOLUTE" height="{h}" heightRelTo="ABSOLUTE" protect="0"/>\
+<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" \
+holdAnchorAndSO="0" vertRelTo="PARA" horzRelTo="COLUMN" \
+vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>\
+<hp:outMargin left="0" right="0" top="0" bottom="0"/>\
+</hp:pic>\
+</hp:run></hp:p>
+"""
+
+
 def emit_table(rows, style='data'):
     """Emit a table from parsed rows. First row = header."""
     if not rows or len(rows) < 2:
@@ -370,10 +409,12 @@ def parse_table_block(lines):
     return rows
 
 
-def convert(md_text):
-    """Convert annotated markdown to section0.xml content."""
+def convert(md_text, md_dir=''):
+    """Convert annotated markdown to section0.xml content.
+    Returns (xml_parts, image_files) where image_files is list of absolute paths."""
     lines = md_text.split('\n')
     xml_parts = []
+    image_files = []  # collect image file paths for --images flag
     i = 0
     pending_pagebreak = False
     pending_table_style = 'data'
@@ -418,6 +459,30 @@ def convert(md_text):
             xml_parts.append(emit_box(box_lines, box_type))
             xml_parts.append(spacer())
             is_first_element = False
+            continue
+
+        # ── Images: ![alt](file) or ![[file]] ──
+        img_match = re.match(r'^!\[([^\]]*)\]\(([^)]+)\)', stripped)
+        img_match2 = re.match(r'^!\[\[([^\]]+)\]\]', stripped)
+        if img_match or img_match2:
+            if img_match:
+                filename = img_match.group(2).strip()
+            else:
+                filename = img_match2.group(1).strip()
+
+            # Resolve path relative to markdown file directory
+            img_path = os.path.join(md_dir, filename) if md_dir else filename
+            if os.path.isfile(img_path):
+                image_files.append(os.path.abspath(img_path))
+                # Generate image ID from filename
+                img_id = re.sub(r'[^A-Za-z0-9_]', '_', os.path.splitext(filename)[0])
+                if not is_first_element:
+                    xml_parts.append(spacer())
+                xml_parts.append(emit_image(img_id))
+                xml_parts.append(spacer())
+                is_first_element = False
+            # If file doesn't exist, skip silently
+            i += 1
             continue
 
         # ── Horizontal rule (---) ──
@@ -527,7 +592,7 @@ def convert(md_text):
 
         i += 1
 
-    return xml_parts
+    return xml_parts, image_files
 
 
 def main():
@@ -543,8 +608,11 @@ def main():
     with open(args.input, encoding='utf-8') as f:
         md_text = f.read()
 
+    # Resolve markdown file directory for relative image paths
+    md_dir = os.path.dirname(os.path.abspath(args.input))
+
     # Convert
-    xml_parts = convert(md_text)
+    xml_parts, image_files = convert(md_text, md_dir=md_dir)
 
     # Assemble section0.xml
     xml_content = XML_HEADER + SEC_OPEN + '\n'
@@ -577,6 +645,10 @@ def main():
 
         hwpx_path = args.output if args.output.endswith('.hwpx') else args.output.replace('.xml', '.hwpx')
         cmd = f'python3 "{build_script}" --section "{section_path}" --output "{hwpx_path}" --title "{title}"'
+        if image_files:
+            img_args = ' '.join(f'"{p}"' for p in image_files)
+            cmd += f' --images {img_args}'
+            print(f'[INFO] Including {len(image_files)} image(s)')
         print(f'[INFO] Building HWPX...')
         os.system(cmd)
 
