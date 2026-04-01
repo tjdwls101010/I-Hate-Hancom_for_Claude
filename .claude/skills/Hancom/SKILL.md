@@ -22,11 +22,16 @@ Read these only when you need deeper understanding beyond what the catalog shows
 
 | When | Read |
 |------|------|
+| Normalizing markdown before conversion | `references/normalization-guide.md` |
 | Deciding which visual pattern fits your content | `references/document-design.md` |
 | Looking up what a specific style ID does | `references/style-catalog.md` |
 | Understanding XML structure rules (esp. tables) | `references/hwpx-format.md` |
 
 ## Writing Workflow
+
+### Step 0: Normalize the markdown (if needed)
+
+Read `references/normalization-guide.md`. Assess whether the input markdown needs structural normalization (bullet→table conversions, Obsidian syntax cleanup, repetitive content condensing). If yes, create a normalized copy using Edit() and work from that. If the document is prose/editorial with no structured data, skip to Step 1.
 
 ### Step 1: Analyze the markdown
 
