@@ -17,6 +17,8 @@
   <img src="https://img.shields.io/badge/python-3.8+-green.svg" alt="Python 3.8+" />
 </p>
 
+![](https://github.com/tjdwls101010/DUMOK/blob/main/Images/gemini-3-pro-1775065310560ie56x44sf.png?raw=true)
+
 ---
 
 ## The Problem: 한컴의 문제
