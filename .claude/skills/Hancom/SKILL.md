@@ -5,46 +5,49 @@ description: HWPX 한컴문서를 읽고 작성하는 스킬. 한컴문서(HWPX)
 
 # HWPX Document Skill
 
-HWPX is Korea's standard document format — a ZIP archive containing XML files. The core idea: `header.xml` defines all styles by ID (like CSS), and `section0.xml` references those IDs to format content (like HTML).
+HWPX is Korea's standard document format — a ZIP archive containing XML files. The core idea: `header.xml` defines all styles by ID (like CSS), and `section0.xml` references those IDs to format content (like HTML). The converter (`md_to_hwpx.py`) handles all XML generation from annotated markdown.
 
 ## Reference Docs
 
 | When | Read |
 |------|------|
-| Normalizing markdown before conversion | `references/normalization-guide.md` |
-| Adding design annotations to markdown | `references/annotation-guide.md` |
-| Deciding which visual pattern fits your content | `references/document-design.md` |
-| Looking up what a specific style ID does | `references/style-catalog.md` |
-| Understanding XML structure rules (esp. tables) | `references/hwpx-format.md` |
+| Preparing content (normalize + annotate) | `references/content-prep-guide.md` |
+| Understanding design principles | `references/document-design.md` |
+| Looking up style IDs | `references/style-catalog.md` |
+| Understanding HWPX XML structure | `references/hwpx-format.md` |
 
 ## Writing Workflow
 
-### Step 1: Normalize the markdown (if needed)
+### Step 1: Lint the markdown
 
-Read `references/normalization-guide.md`. Assess whether the input markdown needs structural normalization (bullet→table conversions, Obsidian syntax cleanup, repetitive content condensing). If yes, create a normalized copy using Edit() and work from that. If the document is prose/editorial with no structured data, skip to Step 2.
+Copy the original file and run mechanical cleanup:
 
-### Step 2: Annotate the markdown
+```bash
+cp original.md cleaned_original.md
+python3 scripts/md_lint.py cleaned_original.md
+```
 
-Read `references/annotation-guide.md`. Add HTML comment annotations for pagebreaks, table styles, and box types where design judgment is needed. Use Edit() to insert annotations into the normalized markdown. Most elements need no annotation — `md_to_hwpx.py` auto-detects from markdown syntax.
+This fixes heading level gaps, collapses consecutive blank lines, removes blank lines between list items, normalizes multiple spaces, and strips trailing whitespace. No semantic judgment — purely mechanical.
+
+### Step 2: Prepare content (normalize + annotate)
+
+Read `references/content-prep-guide.md`. Then Read() the linted file and Edit() in one pass:
+
+- Restructure where needed (bullet→table conversions, condensing repetitive content)
+- Add annotations where design judgment is needed (`<!-- table:compare -->`, `<!-- box:note -->`, etc.)
+- Clean up Obsidian syntax, decorative emoji, inline URLs
+
+Most elements need no annotation — the converter auto-detects headings, bullets, tables, and paragraphs from standard markdown syntax.
 
 ### Step 3: Convert to HWPX
 
 ```bash
-python3 scripts/md_to_hwpx.py input.md --output output.hwpx --build --title "문서 제목"
+python3 scripts/md_to_hwpx.py cleaned_original.md --output output.hwpx --build --title "문서 제목"
 ```
 
-With images (auto-detected from `![](file)` in markdown):
-```bash
-python3 scripts/md_to_hwpx.py input.md --output output.hwpx --build --title "문서 제목"
-```
+Images referenced in the markdown (`![](file.png)`) are automatically detected and embedded.
 
 The converter handles all XML generation: headings, bullets, tables, boxes, images, spacing. No manual XML assembly needed.
-
-### Step 4: Validate (optional)
-
-```bash
-python3 scripts/validate_hwpx.py --section section0.xml --header templates/base/Contents/header.xml
-```
 
 ## Reading Workflow
 
@@ -55,16 +58,17 @@ python3 scripts/read_hwpx.py input.hwpx --verbose  # with style info
 
 ## Critical Constraints
 
-These are hard technical requirements. Violating them crashes Hancom Office:
+These are hard technical requirements — violating them crashes Hancom Office:
 
 1. **Never hand-write header.xml** — always use `templates/base/Contents/header.xml`
 2. **Never use Python ElementTree to write header.xml** — it rewrites `hh:`/`hc:` prefixes to `ns0:`/`ns1:`, breaking Hancom rendering
 3. **Don't write secPr** — `build_hwpx.py` injects it from the template automatically
-4. **paraPr 2-8 are DANGEROUS** — they trigger auto-numbering. Use 0, 1, 15 for indentation
+4. **paraPr 2-8 are dangerous** — they trigger auto-numbering. Use 0, 1, 15 for indentation
 
 ## Script Paths
 
 All scripts are in `scripts/` within this skill directory:
+- `scripts/md_lint.py` — mechanical markdown linter (pre-processing)
 - `scripts/md_to_hwpx.py` — annotated markdown → HWPX (main converter)
 - `scripts/build_hwpx.py` — section0.xml → HWPX ZIP assembly
 - `scripts/validate_hwpx.py` — structural validation

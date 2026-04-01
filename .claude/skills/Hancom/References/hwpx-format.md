@@ -255,4 +255,4 @@ All of constraints 1 and 5 are handled automatically by `build_hwpx.py`. You onl
 </hs:sec>
 ```
 
-This is the simplest valid document. `build_hwpx.py` will inject secPr and package it. For realistic documents, copy patterns from the design catalog.
+This is the simplest valid document. `build_hwpx.py` will inject secPr and package it.
