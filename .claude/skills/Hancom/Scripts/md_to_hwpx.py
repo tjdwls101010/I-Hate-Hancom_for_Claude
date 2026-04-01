@@ -342,8 +342,10 @@ def convert(md_text, md_dir=''):
         line = lines[i]
         stripped = line.strip()
 
-        # Skip empty lines
+        # Blank line → insert spacer for paragraph separation
         if not stripped:
+            if xml_parts and xml_parts[-1] != spacer():
+                xml_parts.append(spacer())
             i += 1
             continue
 
