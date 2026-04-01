@@ -23,6 +23,7 @@ Read these only when you need deeper understanding beyond what the catalog shows
 | When | Read |
 |------|------|
 | Normalizing markdown before conversion | `references/normalization-guide.md` |
+| Adding design annotations to markdown | `references/annotation-guide.md` |
 | Deciding which visual pattern fits your content | `references/document-design.md` |
 | Looking up what a specific style ID does | `references/style-catalog.md` |
 | Understanding XML structure rules (esp. tables) | `references/hwpx-format.md` |
@@ -32,6 +33,10 @@ Read these only when you need deeper understanding beyond what the catalog shows
 ### Step 0: Normalize the markdown (if needed)
 
 Read `references/normalization-guide.md`. Assess whether the input markdown needs structural normalization (bullet→table conversions, Obsidian syntax cleanup, repetitive content condensing). If yes, create a normalized copy using Edit() and work from that. If the document is prose/editorial with no structured data, skip to Step 1.
+
+### Step 0.5: Annotate the markdown
+
+Read `references/annotation-guide.md`. Add HTML comment annotations for pagebreaks, table styles, and box types where design judgment is needed. Use Edit() to insert annotations into the normalized markdown. Most elements need no annotation — Python auto-detects from markdown syntax.
 
 ### Step 1: Analyze the markdown
 
