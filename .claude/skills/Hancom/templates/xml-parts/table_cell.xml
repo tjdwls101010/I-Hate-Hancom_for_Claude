@@ -1,0 +1,13 @@
+<hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="{bf}">
+  <hp:cellAddr colAddr="{col_addr}" rowAddr="{row_addr}"/>
+  <hp:cellSpan colSpan="1" rowSpan="1"/>
+  <hp:cellSz width="{width}" height="1200"/>
+  <hp:cellMargin left="283" right="283" top="141" bottom="141"/>
+  <hp:subList>
+    <hp:p paraPrIDRef="{para_id}" styleIDRef="0">
+      <hp:run charPrIDRef="{char}">
+        <hp:t>{text}</hp:t>
+      </hp:run>
+    </hp:p>
+  </hp:subList>
+</hp:tc>

@@ -54,7 +54,28 @@ BF = {
 }
 
 # ──────────────────────────────────────────────
-# XML Templates
+# Template loader
+# ──────────────────────────────────────────────
+_TEMPLATE_CACHE = {}
+_TEMPLATE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'templates', 'xml-parts')
+
+
+def _load_template(name):
+    """Load an XML template file from templates/xml-parts/. Cached after first load."""
+    if name not in _TEMPLATE_CACHE:
+        path = os.path.join(_TEMPLATE_DIR, f'{name}.xml')
+        with open(path, encoding='utf-8') as f:
+            _TEMPLATE_CACHE[name] = f.read()
+    return _TEMPLATE_CACHE[name]
+
+
+def _escape(text):
+    """Escape XML special characters."""
+    return text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+
+
+# ──────────────────────────────────────────────
+# XML Constants
 # ──────────────────────────────────────────────
 XML_HEADER = '<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>\n'
 
@@ -72,24 +93,17 @@ FULL_WIDTH = 48190  # content area in HWPUNIT
 
 def p(para_id, char_id, text, page_break=False):
     """Generate a simple paragraph with one run."""
-    pb = '1' if page_break else '0'
-    escaped = text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-    return (f'<hp:p id="0" paraPrIDRef="{para_id}" styleIDRef="0"'
-            f' pageBreak="{pb}" columnBreak="0" merged="0">'
-            f'<hp:run charPrIDRef="{char_id}"><hp:t>{escaped}</hp:t></hp:run>'
-            f'</hp:p>\n')
+    run_xml = _load_template('run').format(char_id=char_id, text=_escape(text))
+    return _load_template('paragraph').format(
+        para_id=para_id, page_break='1' if page_break else '0', runs=run_xml)
 
 
 def p_multi_run(para_id, runs, page_break=False):
     """Generate a paragraph with multiple runs [(char_id, text), ...]."""
-    pb = '1' if page_break else '0'
-    xml = (f'<hp:p id="0" paraPrIDRef="{para_id}" styleIDRef="0"'
-           f' pageBreak="{pb}" columnBreak="0" merged="0">')
-    for char_id, text in runs:
-        escaped = text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-        xml += f'<hp:run charPrIDRef="{char_id}"><hp:t>{escaped}</hp:t></hp:run>'
-    xml += '</hp:p>\n'
-    return xml
+    run_tpl = _load_template('run')
+    runs_xml = ''.join(run_tpl.format(char_id=cid, text=_escape(txt)) for cid, txt in runs)
+    return _load_template('paragraph').format(
+        para_id=para_id, page_break='1' if page_break else '0', runs=runs_xml)
 
 
 def spacer():
@@ -193,37 +207,11 @@ def emit_section_header(text):
 
 
 def _emit_section_header_table(number, title):
-    """Emit the 2x4 green table section header (copied from catalog structure)."""
-    return (
-        f'<hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">'
-        f'<hp:run charPrIDRef="{CHAR["small"]}">'
-        f'<hp:tbl rowCnt="1" colCnt="2" cellSpacing="0" borderFillIDRef="{BF["cell"]}"'
-        f' pageBreak="CELL" repeatHeader="0" id="0">'
-        f'<hp:tr>'
-        f'<hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="{BF["green_fill"]}">'
-        f'<hp:cellAddr colAddr="0" rowAddr="0"/>'
-        f'<hp:cellSpan colSpan="1" rowSpan="1"/>'
-        f'<hp:cellSz width="3500" height="1600"/>'
-        f'<hp:cellMargin left="283" right="283" top="141" bottom="141"/>'
-        f'<hp:subList>'
-        f'<hp:p paraPrIDRef="{PARA["table_cell"]}" styleIDRef="0">'
-        f'<hp:run charPrIDRef="{CHAR["sec_num"]}"><hp:t>{number}</hp:t></hp:run>'
-        f'</hp:p>'
-        f'</hp:subList>'
-        f'</hp:tc>'
-        f'<hp:tc name="" header="0" hasMargin="0" protect="0" editable="0" dirty="0" borderFillIDRef="{BF["cell"]}">'
-        f'<hp:cellAddr colAddr="1" rowAddr="0"/>'
-        f'<hp:cellSpan colSpan="1" rowSpan="1"/>'
-        f'<hp:cellSz width="16500" height="1600"/>'
-        f'<hp:cellMargin left="283" right="283" top="141" bottom="141"/>'
-        f'<hp:subList>'
-        f'<hp:p paraPrIDRef="{PARA["table_cell"]}" styleIDRef="0">'
-        f'<hp:run charPrIDRef="{CHAR["sec_title"]}"><hp:t>{title}</hp:t></hp:run>'
-        f'</hp:p>'
-        f'</hp:subList>'
-        f'</hp:tc>'
-        f'</hp:tr>'
-        f'</hp:tbl></hp:run></hp:p>\n'
+    """Emit the green table section header from template."""
+    return _load_template('section_header').format(
+        number=number, title=title,
+        char_small=CHAR['small'], sec_num=CHAR['sec_num'], sec_title=CHAR['sec_title'],
+        bf_green=BF['green_fill'], bf_cell=BF['cell'], table_cell=PARA['table_cell']
     )
 
 
@@ -251,46 +239,14 @@ def emit_caption(text):
 
 
 def emit_image(image_id):
-    """Emit an image placeholder with <hp:pic> element matching Hancom's expected format."""
-    w = FULL_WIDTH
-    h = 30000  # default height, user adjusts in Hancom
-    c = CHAR['small']
-    return f"""\
-<hp:p id="0" paraPrIDRef="0" styleIDRef="0" pageBreak="0" columnBreak="0" merged="0">\
-<hp:run charPrIDRef="{c}">\
-<hp:pic id="0" zOrder="0" numberingType="PICTURE" textWrap="TOP_AND_BOTTOM" \
-textFlow="BOTH_SIDES" lock="0" dropcapstyle="None" href="" groupLevel="0" instid="0" reverse="0">\
-<hp:offset x="0" y="0"/>\
-<hp:orgSz width="{w}" height="{h}"/>\
-<hp:curSz width="{w}" height="{h}"/>\
-<hp:flip horizontal="0" vertical="0"/>\
-<hp:rotationInfo angle="0" centerX="0" centerY="0" rotateimage="1"/>\
-<hp:renderingInfo>\
-<hc:transMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>\
-<hc:scaMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>\
-<hc:rotMatrix e1="1" e2="0" e3="0" e4="0" e5="1" e6="0"/>\
-</hp:renderingInfo>\
-<hp:imgRect>\
-<hc:pt0 x="0" y="0"/><hc:pt1 x="{w}" y="0"/>\
-<hc:pt2 x="{w}" y="{h}"/><hc:pt3 x="0" y="{h}"/>\
-</hp:imgRect>\
-<hp:imgClip left="0" right="0" top="0" bottom="0"/>\
-<hp:inMargin left="0" right="0" top="0" bottom="0"/>\
-<hp:imgDim dimwidth="{w}" dimheight="{h}"/>\
-<hc:img binaryItemIDRef="{image_id}" bright="0" contrast="0" effect="REAL_PIC" alpha="0"/>\
-<hp:effects/>\
-<hp:sz width="{w}" widthRelTo="ABSOLUTE" height="{h}" heightRelTo="ABSOLUTE" protect="0"/>\
-<hp:pos treatAsChar="1" affectLSpacing="0" flowWithText="1" allowOverlap="0" \
-holdAnchorAndSO="0" vertRelTo="PARA" horzRelTo="COLUMN" \
-vertAlign="TOP" horzAlign="LEFT" vertOffset="0" horzOffset="0"/>\
-<hp:outMargin left="0" right="0" top="0" bottom="0"/>\
-</hp:pic>\
-</hp:run></hp:p>
-"""
+    """Emit an image placeholder from template."""
+    return _load_template('image').format(
+        image_id=image_id, width=FULL_WIDTH, height=30000, char_small=CHAR['small']
+    )
 
 
 def emit_table(rows, style='data'):
-    """Emit a table from parsed rows. First row = header."""
+    """Emit a table from parsed rows using templates. First row = header."""
     if not rows or len(rows) < 2:
         return ''
 
@@ -298,18 +254,14 @@ def emit_table(rows, style='data'):
     if num_cols == 0:
         return ''
 
-    # Calculate column widths (distribute evenly)
     col_width = FULL_WIDTH // num_cols
-
     head_bf = BF['gray_head'] if style == 'data' else BF['blue_head']
     body_bf = BF['cell']
+    cell_tpl = _load_template('table_cell')
 
-    xml = (f'<hp:p id="0" paraPrIDRef="0" styleIDRef="0"'
-           f' pageBreak="0" columnBreak="0" merged="0">'
-           f'<hp:run charPrIDRef="{CHAR["small"]}">'
-           f'<hp:tbl rowCnt="{len(rows)}" colCnt="{num_cols}"'
-           f' cellSpacing="0" borderFillIDRef="{BF["cell"]}"'
-           f' pageBreak="CELL" repeatHeader="0" id="0">\n')
+    xml = _load_template('table_open').format(
+        row_cnt=len(rows), col_cnt=num_cols,
+        bf_cell=BF['cell'], char_small=CHAR['small'])
 
     for row_idx, row in enumerate(rows):
         is_header = (row_idx == 0)
@@ -318,23 +270,10 @@ def emit_table(rows, style='data'):
 
         xml += '<hp:tr>\n'
         for col_idx, cell_text in enumerate(row):
-            cell_text = cell_text.strip()
-            # Remove bold markers from cell text
-            cell_text = re.sub(r'\*\*(.+?)\*\*', r'\1', cell_text)
-            escaped = cell_text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-
-            xml += (f'<hp:tc name="" header="0" hasMargin="0" protect="0"'
-                    f' editable="0" dirty="0" borderFillIDRef="{bf}">'
-                    f'<hp:cellAddr colAddr="{col_idx}" rowAddr="{row_idx}"/>'
-                    f'<hp:cellSpan colSpan="1" rowSpan="1"/>'
-                    f'<hp:cellSz width="{col_width}" height="1200"/>'
-                    f'<hp:cellMargin left="283" right="283" top="141" bottom="141"/>'
-                    f'<hp:subList>'
-                    f'<hp:p paraPrIDRef="{PARA["table_cell"]}" styleIDRef="0">'
-                    f'<hp:run charPrIDRef="{char}"><hp:t>{escaped}</hp:t></hp:run>'
-                    f'</hp:p>'
-                    f'</hp:subList>'
-                    f'</hp:tc>\n')
+            cell_text = re.sub(r'\*\*(.+?)\*\*', r'\1', cell_text.strip())
+            xml += cell_tpl.format(
+                col_addr=col_idx, row_addr=row_idx, width=col_width,
+                bf=bf, para_id=PARA['table_cell'], char=char, text=_escape(cell_text))
         xml += '</hp:tr>\n'
 
     xml += '</hp:tbl></hp:run></hp:p>\n'
@@ -342,52 +281,30 @@ def emit_table(rows, style='data'):
 
 
 def emit_box(content_lines, box_type='note'):
-    """Emit a 1x1 table box wrapping content lines."""
+    """Emit a 1x1 table box wrapping content lines, using template."""
     bf = BF.get(box_type, BF['cell'])
     char = CHAR['small'] if box_type == 'note' else CHAR['table_body']
+    run_tpl = _load_template('run')
+    para_tpl = _load_template('paragraph')
 
     inner_xml = ''
     for line in content_lines:
         line = line.strip()
         if not line:
             continue
-        # Strip bullet prefix if present
         if line.startswith('- '):
             line = line[2:]
         if '**' in line:
             runs = _split_bold_runs(line, char, CHAR['bold'])
-            run_xml = ''
-            for rc, rt in runs:
-                esc = rt.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-                run_xml += f'<hp:run charPrIDRef="{rc}"><hp:t>{esc}</hp:t></hp:run>'
-            inner_xml += (f'<hp:p paraPrIDRef="{PARA["default"]}" styleIDRef="0">'
-                          f'{run_xml}</hp:p>\n')
+            runs_xml = ''.join(run_tpl.format(char_id=rc, text=_escape(rt)) for rc, rt in runs)
         else:
-            escaped = line.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-            inner_xml += (f'<hp:p paraPrIDRef="{PARA["default"]}" styleIDRef="0">'
-                          f'<hp:run charPrIDRef="{char}"><hp:t>{escaped}</hp:t></hp:run>'
-                          f'</hp:p>\n')
+            runs_xml = run_tpl.format(char_id=char, text=_escape(line))
+        inner_xml += para_tpl.format(para_id=PARA['default'], page_break='0', runs=runs_xml)
 
-    xml = (f'<hp:p id="0" paraPrIDRef="0" styleIDRef="0"'
-           f' pageBreak="0" columnBreak="0" merged="0">'
-           f'<hp:run charPrIDRef="{CHAR["small"]}">'
-           f'<hp:tbl rowCnt="1" colCnt="1" cellSpacing="0"'
-           f' borderFillIDRef="{BF["cell"]}"'
-           f' pageBreak="CELL" repeatHeader="0" id="0">'
-           f'<hp:tr>'
-           f'<hp:tc name="" header="0" hasMargin="0" protect="0"'
-           f' editable="0" dirty="0" borderFillIDRef="{bf}">'
-           f'<hp:cellAddr colAddr="0" rowAddr="0"/>'
-           f'<hp:cellSpan colSpan="1" rowSpan="1"/>'
-           f'<hp:cellSz width="{FULL_WIDTH}" height="1800"/>'
-           f'<hp:cellMargin left="283" right="283" top="141" bottom="141"/>'
-           f'<hp:subList>\n'
-           f'{inner_xml}'
-           f'</hp:subList>'
-           f'</hp:tc>'
-           f'</hp:tr>'
-           f'</hp:tbl></hp:run></hp:p>\n')
-    return xml
+    return _load_template('box').format(
+        bf=bf, width=FULL_WIDTH, char_small=CHAR['small'],
+        bf_cell=BF['cell'], content=inner_xml
+    )
 
 
 # ──────────────────────────────────────────────
