@@ -74,41 +74,50 @@
 
 ## Installation
 
-<!-- TODO: 설치 가이드 이미지/동영상 추가 예정 -->
-
 ### Prerequisites
 
-- [Claude Code](https://claude.ai/code) (CLI, Desktop App, 또는 IDE Extension)
+- [Claude Code](https://claude.ai/code) (Desktop App 또는 CLI)
 - Python 3.8+ (외부 패키지 불필요 — stdlib만 사용)
 
 ### Quick Start
 
-**1. 레포 클론**
+**1.** 사용자 지정 → 플러그인 탐색 진입
 
-```bash
-git clone https://github.com/tjdwls101010/I-Hate-Hancom_for_Claude.git
+<img src="Docs/Installation/1.png" width="600" alt="사용자 지정 메뉴" />
+
+**2.** 플러그인 탐색 클릭
+
+<img src="Docs/Installation/2.png" width="600" alt="플러그인 탐색" />
+
+**3.** `+` → 마켓플레이스 추가
+
+<img src="Docs/Installation/3.png" width="600" alt="마켓플레이스 추가" />
+
+**4.** URL 입력 후 동기화
+
+```
+https://github.com/tjdwls101010/I-Hate-Hancom_for_Claude.git
 ```
 
-**2. Claude Code 플러그인 설치**
+<img src="Docs/Installation/4.png" width="600" alt="URL 입력 및 동기화" />
 
-```
-/plugin marketplace add https://github.com/seongjin/I-Hate-Hancom_for_Claude.git
-/plugin install I-Hate-Hancom_for_Claude
-```
+**5.** I-Hate-Hancom 플러그인 설치
 
-**3. 사용 시작**
+<img src="Docs/Installation/5.png" width="600" alt="플러그인 설치" />
 
-```
-"이 마크다운을 한컴 문서로 만들어줘"
-```
+**6.** 마크다운 파일을 업로드하면 Hancom 스킬이 자동으로 트리거된다
 
-스킬이 자동으로 트리거된다 — "한컴", "hwpx", "보도자료 작성" 같은 키워드를 인식한다.
+<img src="Docs/Installation/6.png" width="600" alt="스킬 자동 트리거" />
 
 ---
 
 ## Usage
 
-<!-- TODO: 사용법 가이드 이미지/동영상 추가 예정 -->
+마크다운 파일을 업로드하거나 자연어로 요청하면 Hancom 스킬이 자동으로 트리거된다:
+
+<video src="https://raw.githubusercontent.com/tjdwls101010/DUMOK/main/Images/usage.mp4" controls width="600"></video>
+
+> GitHub에서 동영상이 보이지 않으면 [직접 링크](https://raw.githubusercontent.com/tjdwls101010/DUMOK/main/Images/usage.mp4)로 확인.
 
 Claude Code에서 자연어로 요청하면 된다:
 
